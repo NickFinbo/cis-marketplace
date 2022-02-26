@@ -1,8 +1,10 @@
-package com.example.cis_marketplace;
+package com.example.cis_marketplace.Nicholas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.cis_marketplace.R;
 
 public class MainActivity extends AppCompatActivity {
 
