@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cismarketplace">
         <activity
+            android:name=".Fleming.MarketActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Nicholas.UserProfileActivity"
+            android:exported="true" />
+        <activity
             android:name=".Nicholas.MainActivity"
             android:exported="true">
             <intent-filter>

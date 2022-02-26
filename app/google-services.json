@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1020381386559",
+    "project_id": "cis-marketplace",
+    "storage_bucket": "cis-marketplace.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020381386559:android:5d91aaa2dfdc626ae2a58a",
+        "android_client_info": {
+          "package_name": "com.example.cis_marketplace"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020381386559-5ev80v9venj4pbr0l8sa9hh07av5fd1u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGngSaBu67nG1zfIFvAEctXTmLz5Tmeag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1020381386559-5ev80v9venj4pbr0l8sa9hh07av5fd1u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
