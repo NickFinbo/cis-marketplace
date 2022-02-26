@@ -4,36 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Nicholas.MainActivity">
 
 
     <EditText
         android:id="@+id/UserEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="49dp"
-        android:layout_marginBottom="10dp"
         android:ems="10"
         android:hint="Email..."
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/UserPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        tools:layout_editor_absoluteX="101dp"
+        tools:layout_editor_absoluteY="323dp" />
 
     <EditText
         android:id="@+id/UserPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:ems="10"
         android:hint="Password..."
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/SignUpButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:layout_editor_absoluteX="101dp"
+        tools:layout_editor_absoluteY="366dp" />
 
     <Button
         android:id="@+id/SignUpButton"
