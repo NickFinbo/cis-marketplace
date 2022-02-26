@@ -14,8 +14,11 @@
         android:ems="10"
         android:hint="Email..."
         android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="323dp" />
+        app:layout_constraintBottom_toTopOf="@+id/UserPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <EditText
         android:id="@+id/UserPassword"
@@ -24,41 +27,43 @@
         android:ems="10"
         android:hint="Password..."
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="366dp" />
+        app:layout_constraintBottom_toTopOf="@+id/SignUpButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/UserEmail" />
 
     <Button
         android:id="@+id/SignUpButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="245dp"
         android:text="Sign Up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/LogInButton" />
+        app:layout_constraintStart_toEndOf="@+id/LogInButton"
+        app:layout_constraintTop_toBottomOf="@+id/UserPassword" />
 
     <Button
         android:id="@+id/LogInButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="245dp"
         android:text="Log In"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/SignUpButton"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/UserPassword" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="237dp"
         android:layout_height="219dp"
-        android:layout_marginStart="87dp"
-        android:layout_marginTop="55dp"
-        android:layout_marginEnd="87dp"
+        app:layout_constraintBottom_toTopOf="@+id/UserEmail"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/cis_marketplace" />
