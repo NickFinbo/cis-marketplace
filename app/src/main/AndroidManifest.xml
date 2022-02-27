@@ -10,13 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cismarketplace">
         <activity
+            android:name=".HomeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CompleteSignUpActivity"
+            android:exported="true" />
+        <activity
             android:name=".Fleming.MarketActivity"
             android:exported="true" />
         <activity
             android:name=".Nicholas.UserProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".Nicholas.MainActivity"
+            android:name=".Nicholas.AuthActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

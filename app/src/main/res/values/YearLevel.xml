@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">cis-marketplace</string>
+
+    <string-array name="YearLevels">
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+    </string-array>
+</resources>
