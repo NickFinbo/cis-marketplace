@@ -20,11 +20,10 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="48dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
+        android:layout_width="61dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/cis_marketplace" />
@@ -49,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="144dp"
         android:text="Subject Categories"
-        android:textColor="#000000"
+        android:textColor="#9E0917"
         android:textSize="16sp"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
