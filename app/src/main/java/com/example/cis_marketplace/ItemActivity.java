@@ -11,4 +11,7 @@ public class ItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
     }
+    private void populateData(){
+        // get the object passed in from home activity & update UI using this information
+    }
 }
