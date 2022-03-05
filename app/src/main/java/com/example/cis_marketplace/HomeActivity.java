@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class HomeActivity extends AppCompatActivity {
 
 
@@ -15,6 +17,10 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+    }
+    public void signOut(View v){
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(this, AuthActivity.class));
     }
     public void imageClicked(View v){
         ImageView image = (ImageView) findViewById(v.getId());
