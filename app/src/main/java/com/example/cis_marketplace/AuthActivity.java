@@ -17,6 +17,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -47,13 +48,22 @@ public class AuthActivity extends AppCompatActivity {
         passwordField = findViewById(R.id.UserPassword);
 
         fireStore = FirebaseFirestore.getInstance();
-//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//                .requestIdToken("")
-//                .requestEmail()
-//                .build();
-//
-//        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken("1020381386559-1mt45vg5sp3r0hm7qhdrfquvsc2o7lir.apps.googleusercontent.com")
+                .requestEmail()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         mAuth = FirebaseAuth.getInstance();
+
+        SignInButton googleSignInButton = findViewById(R.id.GoogleSignInButton);
+        googleSignInButton.setSize(SignInButton.SIZE_STANDARD);
+        findViewById(R.id.GoogleSignInButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                googleSignIn();
+            }
+        });
     }
     protected void onStart(){
         super.onStart();
@@ -73,6 +83,9 @@ public class AuthActivity extends AppCompatActivity {
                 Log.w(TAG, "Google sign in failed", e);
             }
         }
+        else{
+            Toast.makeText(AuthActivity.this, "wrong code", Toast.LENGTH_LONG).show();
+        }
     }
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
@@ -90,12 +103,11 @@ public class AuthActivity extends AppCompatActivity {
             }
         });
     }
-    public void googleSignIn(View v) {
+    public void googleSignIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
     public void signUp(View v) {
-        System.out.println("sign up");
         String emailString = emailField.getText().toString();
         if(!(emailString.contains(".cis.edu.hk"))){
             Toast.makeText(this, "Only CIS users can use this app", Toast.LENGTH_SHORT).show();

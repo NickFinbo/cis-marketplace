@@ -23,17 +23,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.733" />
 
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/GoogleSignInButton"
-        android:layout_width="212dp"
-        android:layout_height="69dp"
-        android:layout_marginBottom="76dp"
-        android:onClick="googleSignIn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <Button
         android:id="@+id/SignUpButton"
         android:layout_width="wrap_content"
@@ -86,6 +75,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/cis_marketplace" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/GoogleSignInButton"
+        android:layout_width="193dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="88dp"
+        android:onClick="googleSignIn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
