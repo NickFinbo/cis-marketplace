@@ -44,8 +44,6 @@ public class AuthActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
-        emailField = findViewById(R.id.UserEmail);
-        passwordField = findViewById(R.id.UserPassword);
 
         fireStore = FirebaseFirestore.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -71,6 +69,11 @@ public class AuthActivity extends AppCompatActivity {
         updateUI(currentUser);
     }
 
+    public void googleSignIn() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
@@ -87,6 +90,7 @@ public class AuthActivity extends AppCompatActivity {
             Toast.makeText(AuthActivity.this, "wrong code", Toast.LENGTH_LONG).show();
         }
     }
+
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -103,47 +107,7 @@ public class AuthActivity extends AppCompatActivity {
             }
         });
     }
-    public void googleSignIn() {
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
-    public void signUp(View v) {
-        String emailString = emailField.getText().toString();
-        if(!(emailString.contains(".cis.edu.hk"))){
-            Toast.makeText(this, "Only CIS users can use this app", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        String passwordString = passwordField.getText().toString();
-        mAuth.createUserWithEmailAndPassword(emailString, passwordString).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(AuthActivity.this, "You signed up successfully", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(AuthActivity.this, CompleteSignUpActivity.class));
-                } else {
-                    // If sign up fails, display a message to the user.
-                    Toast.makeText(AuthActivity.this, "Sign up failed", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-    }
 
-    public void signIn(View v) {
-        String emailString = emailField.getText().toString();
-        String passwordString = passwordField.getText().toString();
-        mAuth.signInWithEmailAndPassword(emailString,passwordString).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(AuthActivity.this, "You signed in successfully", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(AuthActivity.this, HomeActivity.class));
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Toast.makeText(AuthActivity.this, "sign in failed", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-    }
     protected void checkUserValidity(Task<AuthResult> task){
         if(task.getResult().getAdditionalUserInfo().isNewUser()){
             startActivity(new Intent(AuthActivity.this, CompleteSignUpActivity.class));
