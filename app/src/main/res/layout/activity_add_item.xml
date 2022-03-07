@@ -4,15 +4,177 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddItemActivity">
+    android:background="#03A9F4"
+    android:backgroundTint="#9C27B0"
+    android:backgroundTintMode="add"
+    tools:context=".Fleming.AddItemActivity">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="130dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="86dp"
+        android:backgroundTint="#E8584D"
+        android:onClick="addItem"
+        android:text="add"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionn" />
+
+    <EditText
+        android:id="@+id/descriptionn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="59dp"
+        android:layout_marginBottom="122dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/description"
+        app:layout_constraintTop_toBottomOf="@+id/typee" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/condition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="add item activity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="52dp"
+        android:text="Condition"
+        app:layout_constraintBottom_toTopOf="@+id/type"
+        app:layout_constraintEnd_toStartOf="@+id/conditionn"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="166dp" />
+        app:layout_constraintTop_toBottomOf="@+id/yearLevel" />
+
+    <Spinner
+        android:id="@+id/typee"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="41dp"
+        app:layout_constraintBottom_toTopOf="@+id/descriptionn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/type"
+        app:layout_constraintTop_toBottomOf="@+id/conditionn" />
+
+    <Spinner
+        android:id="@+id/conditionn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="57dp"
+        android:layout_marginBottom="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/typee"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/condition"
+        app:layout_constraintTop_toBottomOf="@+id/yearLevell" />
+
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="87dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="56dp"
+        android:text="Type"
+        app:layout_constraintBottom_toTopOf="@+id/description"
+        app:layout_constraintEnd_toStartOf="@+id/typee"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/condition" />
+
+    <TextView
+        android:id="@+id/yearLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="54dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="59dp"
+        android:text="Intended Year Level"
+        app:layout_constraintBottom_toTopOf="@+id/condition"
+        app:layout_constraintEnd_toStartOf="@+id/yearLevell"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/namee" />
+
+    <Spinner
+        android:id="@+id/yearLevell"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="26dp"
+        app:layout_constraintBottom_toTopOf="@+id/conditionn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/yearLevel"
+        app:layout_constraintTop_toBottomOf="@+id/pricee" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="49dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="96dp"
+        android:text="Description"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintEnd_toStartOf="@+id/descriptionn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/type" />
+
+    <EditText
+        android:id="@+id/namee"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="83dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="42dp"
+        android:ems="10"
+        android:hint="Item name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/yearLevel"
+        app:layout_constraintEnd_toStartOf="@+id/pricee"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/pricee"
+        android:layout_width="139dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="85dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="39dp"
+        android:ems="10"
+        android:hint="Price (HKD)"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/yearLevell"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/namee"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="14dp"
+        android:text="Add Image"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button3"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="168dp"
+        android:layout_marginBottom="183dp"
+        android:onClick="upload"
+        android:text="Upload"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView14"
+        app:layout_constraintTop_toBottomOf="@+id/description" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+

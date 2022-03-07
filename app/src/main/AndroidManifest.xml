@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cismarketplace" >
         <activity
-            android:name=".AddItemActivity"
+            android:name=".Fleming.AddItemActivity"
             android:exported="true" />
         <activity
             android:name=".ItemActivity"

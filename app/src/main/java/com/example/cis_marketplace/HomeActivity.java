@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.cis_marketplace.Fleming.AddItemActivity;
 import com.google.firebase.auth.FirebaseAuth;
+
 
 public class HomeActivity extends AppCompatActivity {
     EditText searchResult;
