@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cismarketplace" >
         <activity
-            android:name=".Fleming.AddItemActivity"
+            android:name=".AddItemActivity"
             android:exported="true" />
         <activity
             android:name=".ItemProfileActivity"
@@ -22,14 +22,14 @@
             android:name=".CompleteSignUpActivity"
             android:exported="true" />
         <activity
-            android:name=".Fleming.MarketActivity"
+            android:name=".MarketActivity"
             android:exported="true" />
         <activity
-            android:name=".Nicholas.UserProfileActivity"
+            android:name=".UserProfileActivity"
             android:exported="true" />
         <activity
-        android:name=".AuthActivity"
-        android:exported="true">
+            android:name=".AuthActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

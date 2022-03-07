@@ -8,11 +8,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.cis_marketplace.CompleteSignUpActivity;
-import com.example.cis_marketplace.HomeActivity;
-import com.example.cis_marketplace.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -44,6 +43,7 @@ public class AuthActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
+
 
         fireStore = FirebaseFirestore.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -82,6 +82,8 @@ public class AuthActivity extends AppCompatActivity {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
                 firebaseAuthWithGoogle(account.getIdToken());
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                updateUI(user);
             } catch (ApiException e) {
                 Log.w(TAG, "Google sign in failed", e);
             }
@@ -100,6 +102,7 @@ public class AuthActivity extends AppCompatActivity {
                     // Sign in success, update UI with the signed-in user's information
                     checkUserValidity(task);
                     Toast.makeText(AuthActivity.this, "Google signed up successfully", Toast.LENGTH_LONG).show();
+
                 }else {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(AuthActivity.this, "Google sign up failed", Toast.LENGTH_LONG).show();
@@ -122,5 +125,6 @@ public class AuthActivity extends AppCompatActivity {
             startActivity(new Intent(this, HomeActivity.class));
         }
     }
+
 }
 

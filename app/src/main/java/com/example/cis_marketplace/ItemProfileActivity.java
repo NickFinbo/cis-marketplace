@@ -3,6 +3,7 @@ package com.example.cis_marketplace;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -42,13 +43,13 @@ public class ItemProfileActivity extends AppCompatActivity {
         String priceText = chosen.getPrice().toString();
         String desText = chosen.getDescription();
         String subjectText = chosen.getSubject();
-        String objectPhoto = chosen.getImagePath();
+        //Uri objectPhoto = chosen.getImagePath();
 
         name.setText(nameText);
         price.setText(priceText);
         des.setText(desText);
         subject.setText(subjectText);
-        photoOfObject.setImageURI(objectPhoto);
+        //photoOfObject.setImageURI(objectPhoto);
     }
 
 

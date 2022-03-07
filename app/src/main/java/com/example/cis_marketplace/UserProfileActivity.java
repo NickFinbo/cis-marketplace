@@ -1,10 +1,8 @@
-package com.example.cis_marketplace.Nicholas;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.cis_marketplace;
 
 import android.os.Bundle;
 
-import com.example.cis_marketplace.R;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class UserProfileActivity extends AppCompatActivity {
 

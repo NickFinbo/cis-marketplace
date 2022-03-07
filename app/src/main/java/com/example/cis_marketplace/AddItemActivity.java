@@ -1,21 +1,16 @@
-package com.example.cis_marketplace.Fleming;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.cis_marketplace;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.cis_marketplace.R;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.ArrayList;
 
 public class AddItemActivity extends AppCompatActivity {
 
@@ -38,7 +33,6 @@ public class AddItemActivity extends AppCompatActivity {
     Spinner vehic;
 
 
-
     FirebaseFirestore db;
     FirebaseAuth mAuth;
     FirebaseUser mUser;
@@ -49,9 +43,9 @@ public class AddItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_item);
         mAuth = FirebaseAuth.getInstance();
 
-    //    name = findViewById(R.id.name);
+        //    name = findViewById(R.id.name);
         condition = findViewById(R.id.condition);
-    //    price = findViewById(R.id.price);
+        //    price = findViewById(R.id.price);
         pricee = findViewById(R.id.pricee);
         conditionn = findViewById(R.id.conditionn);
         namee = findViewById(R.id.namee);
@@ -80,7 +74,6 @@ public class AddItemActivity extends AppCompatActivity {
     public boolean isValid() {
         return namee != null && pricee != null && descriptionn != null;
     }
-
 
 
 }
