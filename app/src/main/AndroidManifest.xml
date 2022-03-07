@@ -13,7 +13,7 @@
             android:name=".Fleming.AddItemActivity"
             android:exported="true" />
         <activity
-            android:name=".ItemActivity"
+            android:name=".ItemProfileActivity"
             android:exported="true" />
         <activity
             android:name=".HomeActivity"

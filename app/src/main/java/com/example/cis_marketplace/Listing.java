@@ -88,7 +88,7 @@ public class Listing {
         this.ownerID = ownerID;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
