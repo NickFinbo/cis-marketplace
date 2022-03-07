@@ -28,7 +28,7 @@ public class HomeActivity extends AppCompatActivity {
     public void imageClicked(View v){
         ImageView image = (ImageView) findViewById(v.getId());
         // also need to find someway to get the object from firebase and intent put extra to show in itemActivity
-        startActivity(new Intent(this, ItemActivity.class));
+        startActivity(new Intent(this, ItemProfileActivity.class));
     }
     public void addItemClicked(View v){
         startActivity(new Intent(this, AddItemActivity.class));

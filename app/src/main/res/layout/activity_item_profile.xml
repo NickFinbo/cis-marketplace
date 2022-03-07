@@ -7,7 +7,7 @@
     tools:context=".itemActivity">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/photo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -23,6 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:text="Item Name"
+        android:textColor="#6E0404"
+        android:textSize="30"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,9 +33,10 @@
         android:id="@+id/Description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="30dp"
         android:text="TextView"
+        android:textSize="18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Name" />
 
@@ -42,18 +45,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginEnd="30dp"
         android:text="TextView"
+        android:textSize="18"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/photo" />
 
     <TextView
         android:id="@+id/Price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="30dp"
         android:text="TextView"
+        android:textSize="18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Description" />
 
@@ -64,8 +69,10 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="56dp"
         android:text="Name"
+        android:textColor="#8E0707"
+        android:textSize="20"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/photo" />
 
     <TextView
         android:id="@+id/textView16"
@@ -74,6 +81,8 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="48dp"
         android:text="Description"
+        android:textColor="#8E0707"
+        android:textSize="20"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
@@ -84,6 +93,8 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="48dp"
         android:text="Price"
+        android:textColor="#8E0707"
+        android:textSize="20"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
@@ -91,9 +102,10 @@
         android:id="@+id/Subject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="30dp"
         android:text="TextView"
+        android:textSize="18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Price" />
 
@@ -104,6 +116,9 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="48dp"
         android:text="Subject"
+        android:textColor="#8E0707"
+        android:textSize="20"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
