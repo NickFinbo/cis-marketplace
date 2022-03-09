@@ -51,9 +51,9 @@ public class AddItemActivity extends AppCompatActivity {
         conditionn = findViewById(R.id.conditionn);
         namee = findViewById(R.id.namee);
         description = findViewById(R.id.description);
-        descriptionn = findViewById(R.id.descriptionn);
+        descriptionn = findViewById(R.id.descriptionEditText);
         yearLevel = findViewById(R.id.yearLevel);
-        yearLevell = findViewById(R.id.yearLevell);
+        yearLevell = findViewById(R.id.yearLevelSpinner);
 
         db = FirebaseFirestore.getInstance();
 
