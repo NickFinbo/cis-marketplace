@@ -2,6 +2,7 @@ package com.example.cis_marketplace.Fleming;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -13,7 +14,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+
 public class AddItemActivity extends AppCompatActivity {
+
+    private ArrayList<String> conditions;
+    private ArrayList<String> yearLevels;
+    private ArrayList<String> types;
 
     TextView name;
     TextView condition;
@@ -23,16 +30,12 @@ public class AddItemActivity extends AppCompatActivity {
     TextView yearLevel;
     TextView type;
 
-
     EditText namee;
     Spinner conditionn;
     EditText descriptionn;
     EditText pricee;
     Spinner yearLevell;
     Spinner typee;
-
-    Spinner vehic;
-
 
     FirebaseFirestore db;
     FirebaseAuth mAuth;
@@ -44,9 +47,25 @@ public class AddItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_item);
         mAuth = FirebaseAuth.getInstance();
 
-        //    name = findViewById(R.id.name);
+        conditions = new ArrayList<>();
+        yearLevels = new ArrayList<>();
+        types = new ArrayList<>();
+
+        conditions.add("New");
+        conditions.add("Very Good");
+        conditions.add("Good");
+        conditions.add("Acceptable");
+
+        for(int i = 7;i<=13;i++) {
+            yearLevels.add("Y"+i);
+        }
+
+        types.add("Textbook");
+        types.add("Notes");
+        types.add("Subscription");
+        types.add("Miscellaneous");
+
         condition = findViewById(R.id.condition);
-        //    price = findViewById(R.id.price);
         pricee = findViewById(R.id.pricee);
         conditionn = findViewById(R.id.conditionn);
         namee = findViewById(R.id.namee);
@@ -58,8 +77,12 @@ public class AddItemActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
 
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, modelss);
-//        vehic.setAdapter(adapter);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, conditions);
+        conditionn.setAdapter(adapter);
+        ArrayAdapter<String> adapte = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, yearLevels);
+        yearLevell.setAdapter(adapte);
+        ArrayAdapter<String> adapt = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, types);
+        typee.setAdapter(adapt);
 
     }
 
