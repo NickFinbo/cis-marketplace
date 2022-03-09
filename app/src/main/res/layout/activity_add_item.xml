@@ -7,7 +7,7 @@
     android:background="#03A9F4"
     android:backgroundTint="#9C27B0"
     android:backgroundTintMode="add"
-    tools:context=".AddItemActivity">
+    tools:context=".Fleming.AddItemActivity">
 
     <Button
         android:id="@+id/button"
