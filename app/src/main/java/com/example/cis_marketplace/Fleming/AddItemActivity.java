@@ -66,13 +66,15 @@ public class AddItemActivity extends AppCompatActivity {
         types.add("Miscellaneous");
 
         condition = findViewById(R.id.condition);
-        pricee = findViewById(R.id.pricee);
-        conditionn = findViewById(R.id.conditionn);
-        namee = findViewById(R.id.namee);
+        pricee = findViewById(R.id.priceEditText);
+        conditionn = findViewById(R.id.conditionSpinner);
+        namee = findViewById(R.id.nameEditText);
         description = findViewById(R.id.description);
         descriptionn = findViewById(R.id.descriptionEditText);
         yearLevel = findViewById(R.id.yearLevel);
         yearLevell = findViewById(R.id.yearLevelSpinner);
+        type = findViewById(R.id.type);
+        typee= findViewById(R.id.typeSpinner);
 
         db = FirebaseFirestore.getInstance();
 

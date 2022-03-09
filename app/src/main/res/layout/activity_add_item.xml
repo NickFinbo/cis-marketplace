@@ -50,7 +50,7 @@
         app:layout_constraintVertical_bias="0.38" />
 
     <Spinner
-        android:id="@+id/TypeSpinner"
+        android:id="@+id/typeSpinner"
         android:layout_width="106dp"
         android:layout_height="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -131,7 +131,7 @@
         app:layout_constraintVertical_bias="0.641" />
 
     <EditText
-        android:id="@+id/namee"
+        android:id="@+id/nameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -145,7 +145,7 @@
         app:layout_constraintVertical_bias="0.122" />
 
     <EditText
-        android:id="@+id/pricee"
+        android:id="@+id/priceEditText"
         android:layout_width="139dp"
         android:layout_height="41dp"
         android:ems="10"

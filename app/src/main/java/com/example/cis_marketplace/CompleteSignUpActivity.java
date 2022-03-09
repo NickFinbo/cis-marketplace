@@ -23,8 +23,8 @@ public class CompleteSignUpActivity extends AppCompatActivity implements Adapter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complete_sign_up);
-//        mAuth = FirebaseAuth.getInstance();
-//        fireStore = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        fireStore = FirebaseFirestore.getInstance();
         phoneNumberField = findViewById(R.id.UserPhoneNumber);
         Spinner spinner = findViewById(R.id.YearLevelSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
