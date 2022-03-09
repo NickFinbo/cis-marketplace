@@ -1,4 +1,4 @@
-package com.example.cis_marketplace;
+package com.example.cis_marketplace.Lucas;
 
 public class User {
     String name;

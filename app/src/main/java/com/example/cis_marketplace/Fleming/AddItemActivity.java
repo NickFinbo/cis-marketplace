@@ -29,7 +29,7 @@ public class AddItemActivity extends AppCompatActivity {
     TextView image;
     TextView yearLevel;
     TextView type;
-
+//SUBJECT???
     EditText namee;
     Spinner conditionn;
     EditText descriptionn;

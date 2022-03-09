@@ -8,8 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.example.cis_marketplace.AuthActivity;
-import com.example.cis_marketplace.Fleming.AddItemActivity;
+import com.example.cis_marketplace.Marco.AuthActivity;
 import com.example.cis_marketplace.R;
 import com.google.firebase.auth.FirebaseAuth;
 

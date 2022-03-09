@@ -15,20 +15,20 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/vehicle"
+            app:layout_constraintBottom_toBottomOf="@+id/nameTextView"
             app:layout_constraintEnd_toStartOf="@+id/seat"
             app:layout_constraintStart_toStartOf="@+id/seat"
-            app:layout_constraintTop_toBottomOf="@+id/vehicle">
+            app:layout_constraintTop_toBottomOf="@+id/nameTextView">
 
             <TextView
-                android:id="@+id/pprice"
+                android:id="@+id/priceTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="7dp"
                 android:text="TextView"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/vehicle"
-                app:layout_constraintTop_toBottomOf="@+id/vehicle" />
+                app:layout_constraintStart_toStartOf="@+id/nameTextView"
+                app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
 
             <TextView
                 android:id="@+id/seat"
@@ -39,11 +39,11 @@
                 android:text="TextView"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/vehicle"
-                app:layout_constraintTop_toBottomOf="@+id/vehicle" />
+                app:layout_constraintStart_toEndOf="@+id/nameTextView"
+                app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
 
             <TextView
-                android:id="@+id/vehicle"
+                android:id="@+id/nameTextView"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
@@ -60,10 +60,10 @@
                 android:layout_height="68dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="14dp"
-                app:layout_constraintBottom_toBottomOf="@+id/vehicle"
-                app:layout_constraintEnd_toStartOf="@+id/vehicle"
+                app:layout_constraintBottom_toBottomOf="@+id/nameTextView"
+                app:layout_constraintEnd_toStartOf="@+id/nameTextView"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/vehicle"
+                app:layout_constraintTop_toBottomOf="@+id/nameTextView"
                 tools:srcCompat="@tools:sample/avatars" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

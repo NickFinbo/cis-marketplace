@@ -1,4 +1,4 @@
-package com.example.cis_marketplace;
+package com.example.cis_marketplace.Marco;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.example.cis_marketplace.Nicholas.HomeActivity;
+import com.example.cis_marketplace.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 

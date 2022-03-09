@@ -13,22 +13,22 @@
             android:name=".Fleming.AddItemActivity"
             android:exported="true" />
         <activity
-            android:name=".ItemProfileActivity"
+            android:name=".Lucas.ItemProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".Nicholas.HomeActivity"
             android:exported="true" />
         <activity
-            android:name=".CompleteSignUpActivity"
+            android:name=".Marco.CompleteSignUpActivity"
             android:exported="true" />
         <activity
-            android:name=".MarketActivity"
+            android:name=".Nicholas.MarketActivity"
             android:exported="true" />
         <activity
             android:name=".Fleming.UserProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".AuthActivity"
+            android:name=".Marco.AuthActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

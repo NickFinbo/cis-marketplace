@@ -1,4 +1,4 @@
-package com.example.cis_marketplace;
+package com.example.cis_marketplace.Lucas;
 
 public class Listing {
     String buyerID;
@@ -88,8 +88,8 @@ public class Listing {
         this.ownerID = ownerID;
     }
 
-    public Double getPrice() {
-        return price;
+    public double getPrice() {
+        return  price;
     }
 
     public void setPrice(double price) {
