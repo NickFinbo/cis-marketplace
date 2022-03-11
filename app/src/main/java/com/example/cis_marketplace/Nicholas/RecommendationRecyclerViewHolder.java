@@ -16,7 +16,7 @@ public class RecommendationRecyclerViewHolder extends RecyclerView.ViewHolder
     public RecommendationRecyclerViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        nameText = itemView.findViewById(R.id.nameTextView);
-        priceText = itemView.findViewById(R.id.priceTextView);
+        nameText = itemView.findViewById(R.id.itemName);
+        priceText = itemView.findViewById(R.id.itemCategory);
     }
 }

@@ -30,26 +30,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="marketClicked"
+            android:onClick="homeUI"
             android:text="Home" />
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/addItemButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:onClick="addItemClicked"
-        android:text="add item" />
-
-    <Button
         android:id="@+id/marketButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="78dp"
+        android:layout_height="40dp"
         android:layout_weight="1"
-        android:onClick="marketClicked"
-        android:text="market" />
+        android:onClick="homeUI"
+        android:text="back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/descriptionEditText"

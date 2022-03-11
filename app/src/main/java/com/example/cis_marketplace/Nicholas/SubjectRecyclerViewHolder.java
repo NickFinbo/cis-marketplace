@@ -15,6 +15,6 @@ public class SubjectRecyclerViewHolder extends RecyclerView.ViewHolder
     public SubjectRecyclerViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        classText = itemView.findViewById(R.id.nameTextView);
+        classText = itemView.findViewById(R.id.itemName);
     }
 }
