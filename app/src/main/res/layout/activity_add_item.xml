@@ -9,20 +9,47 @@
     android:backgroundTintMode="add"
     tools:context=".Fleming.AddItemActivity">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="95dp"
-        android:layout_height="50dp"
-        android:backgroundTint="#E8584D"
-        android:onClick="addItem"
-        android:text="add"
-        android:textSize="24sp"
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.963" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/addItemButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="addItem"
+            android:text="Add Item" />
+
+        <Button
+            android:id="@+id/homeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="marketClicked"
+            android:text="Home" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/addItemButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:onClick="addItemClicked"
+        android:text="add item" />
+
+    <Button
+        android:id="@+id/marketButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:onClick="marketClicked"
+        android:text="market" />
 
     <EditText
         android:id="@+id/descriptionEditText"

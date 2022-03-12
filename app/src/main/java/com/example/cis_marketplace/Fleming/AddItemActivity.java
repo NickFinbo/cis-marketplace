@@ -1,5 +1,6 @@
 package com.example.cis_marketplace.Fleming;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cis_marketplace.Marco.AuthActivity;
+import com.example.cis_marketplace.Nicholas.HomeActivity;
 import com.example.cis_marketplace.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -89,11 +92,14 @@ public class AddItemActivity extends AppCompatActivity {
     }
 
     public void addItem(View v) {
-
+            //TODO
     }
 
     public void upload(View v) {
 
+    }
+    public void homeUI(View v){
+        startActivity(new Intent(this, HomeActivity.class));
     }
 
 
