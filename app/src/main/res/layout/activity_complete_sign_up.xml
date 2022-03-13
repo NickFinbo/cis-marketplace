@@ -127,158 +127,171 @@
 
     <CheckBox
         android:id="@+id/VisualArtsCheckBox"
-        android:layout_width="118dp"
+        android:layout_width="150dp"
         android:layout_height="29dp"
         android:text="Visual Arts"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintHorizontal_bias="0.980"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.65" />
 
     <CheckBox
-        android:id="@+id/TOKTextBox"
-        android:layout_width="118dp"
+        android:id="@+id/ComputerScienceCheckBox"
+        android:layout_width="150dp"
         android:layout_height="29dp"
-        android:text="TOK"
+        android:text="Computer Science"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintHorizontal_bias="0.980"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.733" />
+
+    <CheckBox
+        android:id="@+id/ProductDesignCheckBox"
+        android:layout_width="150dp"
+        android:layout_height="29dp"
+        android:text="Product Design"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.980"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.692" />
 
     <CheckBox
+        android:id="@+id/TOKCheckBox"
+        android:layout_width="150dp"
+        android:layout_height="29dp"
+        android:text="TOK"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.980"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.774" />
+
+    <CheckBox
         android:id="@+id/ChemistryCheckBox"
-        android:layout_width="118dp"
+        android:layout_width="150dp"
         android:layout_height="29dp"
         android:text="Chemistry"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintHorizontal_bias="0.980"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.444" />
 
     <CheckBox
         android:id="@+id/InsoCheckBox"
-        android:layout_width="118dp"
+        android:layout_width="150dp"
         android:layout_height="29dp"
         android:text="Inso"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintHorizontal_bias="0.980"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.363" />
 
     <CheckBox
         android:id="@+id/FilmCheckBox"
-        android:layout_width="118dp"
+        android:layout_width="150dp"
         android:layout_height="29dp"
         android:text="Film"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintHorizontal_bias="0.980"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.609" />
 
     <CheckBox
         android:id="@+id/ChineseCheckBox"
-        android:layout_width="118dp"
+        android:layout_width="150dp"
         android:layout_height="29dp"
         android:text="Chinese"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintHorizontal_bias="0.980"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.239" />
 
     <CheckBox
         android:id="@+id/BiologyCheckBox"
-        android:layout_width="118dp"
+        android:layout_width="150dp"
         android:layout_height="29dp"
         android:text="Biology"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintHorizontal_bias="0.980"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.404" />
 
     <CheckBox
         android:id="@+id/MusicCheckBox"
-        android:layout_width="118dp"
+        android:layout_width="150dp"
         android:layout_height="29dp"
         android:text="Music"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintHorizontal_bias="0.980"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.525" />
 
     <CheckBox
         android:id="@+id/DramaCheckBox"
-        android:layout_width="118dp"
+        android:layout_width="150dp"
         android:layout_height="29dp"
         android:text="Drama"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintHorizontal_bias="0.980"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.568" />
 
     <CheckBox
         android:id="@+id/MathCheckBox"
-        android:layout_width="118dp"
+        android:layout_width="150dp"
         android:layout_height="29dp"
         android:text="Math"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintHorizontal_bias="0.980"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.321" />
 
     <CheckBox
         android:id="@+id/PhysicsCheckBox"
-        android:layout_width="118dp"
+        android:layout_width="150dp"
         android:layout_height="29dp"
         android:text="Physics"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintHorizontal_bias="0.980"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.485" />
 
     <CheckBox
         android:id="@+id/EnglishCheckBox"
-        android:layout_width="118dp"
+        android:layout_width="150dp"
         android:layout_height="29dp"
         android:text="English"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintHorizontal_bias="0.980"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.28" />
-
-    <CheckBox
-        android:id="@+id/chineseALangLitCheckBox"
-        android:layout_width="118dp"
-        android:layout_height="29dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.239" />
 
     <TextView
         android:id="@+id/textView12"

@@ -42,6 +42,8 @@ public class AuthActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
         setContentView(R.layout.activity_auth);
 
 
@@ -50,7 +52,6 @@ public class AuthActivity extends AppCompatActivity {
                 .requestIdToken("1020381386559-1mt45vg5sp3r0hm7qhdrfquvsc2o7lir.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
-        //Nick Code:1020381386559-1mt45vg5sp3r0hm7qhdrfquvsc2o7lir.apps.googleusercontent.com
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         mAuth = FirebaseAuth.getInstance();
@@ -63,11 +64,6 @@ public class AuthActivity extends AppCompatActivity {
                 googleSignIn();
             }
         });
-    }
-    protected void onStart(){
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
     }
 
     public void googleSignIn() {

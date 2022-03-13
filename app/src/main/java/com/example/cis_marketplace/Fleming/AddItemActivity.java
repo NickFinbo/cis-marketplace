@@ -64,7 +64,6 @@ public class AddItemActivity extends AppCompatActivity {
     private StorageReference storageRef;
     private StorageTask mUploadTask;
     private Button uploadButton;
-    Long fileName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,11 +166,6 @@ public class AddItemActivity extends AppCompatActivity {
                         }
                     });
         }
-    }
-    private String getFileExtension(Uri uri) {
-        ContentResolver cR = getContentResolver();
-        MimeTypeMap mime = MimeTypeMap.getSingleton();
-        return mime.getExtensionFromMimeType(cR.getType(uri));
     }
     public void homeUI(View v){
         startActivity(new Intent(this, HomeActivity.class));
