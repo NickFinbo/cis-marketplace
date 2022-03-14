@@ -42,8 +42,7 @@ public class AuthActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
+
         setContentView(R.layout.activity_auth);
 
 
@@ -64,6 +63,11 @@ public class AuthActivity extends AppCompatActivity {
                 googleSignIn();
             }
         });
+    }
+    protected void onStart(){
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
     }
 
     public void googleSignIn() {

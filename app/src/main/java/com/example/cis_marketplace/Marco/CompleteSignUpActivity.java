@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.cis_marketplace.Lucas.User;
 import com.example.cis_marketplace.Nicholas.HomeActivity;
 import com.example.cis_marketplace.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -36,8 +37,11 @@ public class CompleteSignUpActivity extends AppCompatActivity implements Adapter
     private FirebaseAuth mAuth;
     private FirebaseFirestore fireStore;
     private EditText phoneNumberField;
-    private String yearLevel;
+    private String name;
+    private EditText nameEditText;
+    private String phoneNumber;
     private Spinner yearLevelSpinner;
+    private String yearLevel;
     private CheckBox chinese, english, math, inso, biology, chemistry, physics, music, drama, film, visualArts, productDesign, computerScience, TOK;
 
     public Uri mImageUri;
@@ -59,6 +63,7 @@ public class CompleteSignUpActivity extends AppCompatActivity implements Adapter
 
         phoneNumberField = findViewById(R.id.UserPhoneNumber);
         yearLevelSpinner = findViewById(R.id.YearLevelSpinner);
+        nameEditText = findViewById(R.id.userName);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.YearLevels, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -107,7 +112,7 @@ public class CompleteSignUpActivity extends AppCompatActivity implements Adapter
         pd.setTitle("Uploading Image...");
         pd.show();
         if (mImageUri != null) {
-            StorageReference fileReference = storageRef.child("user uuid here"); // change this to user UUID later on
+            StorageReference fileReference = storageRef.child(mAuth.getCurrentUser().getUid()); // change this to user UUID later on
             mUploadTask = fileReference.putFile(mImageUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -171,7 +176,10 @@ public class CompleteSignUpActivity extends AppCompatActivity implements Adapter
             subjects.add(computerScience.getText().toString());
         if(TOK.isChecked())
             subjects.add(TOK.getText().toString());
-
+        phoneNumber = phoneNumberField.getText().toString();
+        name = nameEditText.getText().toString();
+        User newUser = new User(name,mAuth.getCurrentUser().getEmail(), subjects, phoneNumber,yearLevel, mAuth.getCurrentUser().getUid());
+        fireStore.collection("Users").document(mAuth.getCurrentUser().getUid()).set(newUser);
         startActivity(new Intent(this, HomeActivity.class));
     }
 
