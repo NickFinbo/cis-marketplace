@@ -179,7 +179,7 @@ public class CompleteSignUpActivity extends AppCompatActivity implements Adapter
         phoneNumber = phoneNumberField.getText().toString();
         name = nameEditText.getText().toString();
         User newUser = new User(name,mAuth.getCurrentUser().getEmail(), subjects, phoneNumber,yearLevel, mAuth.getCurrentUser().getUid());
-        fireStore.collection("Users").document(mAuth.getCurrentUser().getUid()).set(newUser);
+        fireStore.collection("users").document(mAuth.getCurrentUser().getUid()).set(newUser);
         startActivity(new Intent(this, HomeActivity.class));
     }
 
