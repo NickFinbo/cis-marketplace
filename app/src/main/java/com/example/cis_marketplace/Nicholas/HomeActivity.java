@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.cis_marketplace.Fleming.UserProfileActivity;
 import com.example.cis_marketplace.Lucas.Listing;
 import com.example.cis_marketplace.Marco.AuthActivity;
 import com.example.cis_marketplace.Fleming.AddItemActivity;
@@ -173,6 +174,11 @@ public class HomeActivity extends AppCompatActivity {
         //intent.putExtra("items", items);
 
         //startActivity(intent);*/
+    }
+
+    public void goToProfile(View v) {
+        Intent intent = new Intent(this, UserProfileActivity.class);
+        startActivity(intent);
     }
 
 }
