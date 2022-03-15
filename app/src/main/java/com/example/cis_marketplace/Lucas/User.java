@@ -1,25 +1,25 @@
-package com.example.cis_marketplace;
+package com.example.cis_marketplace.Lucas;
+
+import java.util.ArrayList;
 
 public class User {
     String name;
     String email;
-    String subjects;
+    ArrayList<String> subjects;
     String phoneNumber;
-    String profileImagePath; // equals to userID
     String yearLevel;
-    String [] userListings;
+    String id;
 
     public User() {
     }
 
-    public User(String name, String email, String subjects, String phoneNumber, String profileImagePath, String yearLevel, String[] userListings) {
+    public User(String name, String email, ArrayList<String> subjects, String phoneNumber, String yearLevel, String id) {
         this.name = name;
         this.email = email;
         this.subjects = subjects;
         this.phoneNumber = phoneNumber;
-        this.profileImagePath = profileImagePath;
         this.yearLevel = yearLevel;
-        this.userListings = userListings;
+        this.id=id;
     }
 
     public String getName() {
@@ -38,11 +38,11 @@ public class User {
         this.email = email;
     }
 
-    public String getSubjects() {
+    public ArrayList<String> getSubjects() {
         return subjects;
     }
 
-    public void setSubjects(String subjects) {
+    public void setSubjects(ArrayList<String> subjects) {
         this.subjects = subjects;
     }
 
@@ -54,28 +54,12 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getProfileImagePath() {
-        return profileImagePath;
-    }
-
-    public void setProfileImagePath(String profileImagePath) {
-        this.profileImagePath = profileImagePath;
-    }
-
     public String getYearLevel() {
         return yearLevel;
     }
 
     public void setYearLevel(String yearLevel) {
         this.yearLevel = yearLevel;
-    }
-
-    public String[] getUserListings() {
-        return userListings;
-    }
-
-    public void setUserListings(String[] userListings) {
-        this.userListings = userListings;
     }
 
 }

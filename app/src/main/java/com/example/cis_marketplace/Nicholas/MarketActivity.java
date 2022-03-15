@@ -1,16 +1,16 @@
 package com.example.cis_marketplace.Nicholas;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cis_marketplace.R;
 
-public class UserProfileActivity extends AppCompatActivity {
+public class MarketActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_profile);
+        setContentView(R.layout.activity_market);
     }
 }

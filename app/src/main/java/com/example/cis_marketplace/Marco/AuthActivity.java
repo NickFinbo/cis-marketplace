@@ -1,4 +1,4 @@
-package com.example.cis_marketplace;
+package com.example.cis_marketplace.Marco;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,8 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.cis_marketplace.CompleteSignUpActivity;
-import com.example.cis_marketplace.HomeActivity;
+import com.example.cis_marketplace.Nicholas.HomeActivity;
 import com.example.cis_marketplace.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -43,11 +42,13 @@ public class AuthActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_auth);
+
 
         fireStore = FirebaseFirestore.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("1020381386559-1mt45vg5sp3r0hm7qhdrfquvsc2o7lir.apps.googleusercontent.com") //1020381386559-1mt45vg5sp3r0hm7qhdrfquvsc2o7lir.apps.googleusercontent.com
+                .requestIdToken("1020381386559-1mt45vg5sp3r0hm7qhdrfquvsc2o7lir.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
 
@@ -82,6 +83,8 @@ public class AuthActivity extends AppCompatActivity {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
                 firebaseAuthWithGoogle(account.getIdToken());
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                updateUI(user);
             } catch (ApiException e) {
                 Log.w(TAG, "Google sign in failed", e);
             }
@@ -100,6 +103,7 @@ public class AuthActivity extends AppCompatActivity {
                     // Sign in success, update UI with the signed-in user's information
                     checkUserValidity(task);
                     Toast.makeText(AuthActivity.this, "Google signed up successfully", Toast.LENGTH_LONG).show();
+
                 }else {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(AuthActivity.this, "Google sign up failed", Toast.LENGTH_LONG).show();
@@ -122,5 +126,6 @@ public class AuthActivity extends AppCompatActivity {
             startActivity(new Intent(this, HomeActivity.class));
         }
     }
+
 }
 
