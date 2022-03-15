@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -31,6 +34,7 @@ import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class CompleteSignUpActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
@@ -42,8 +46,9 @@ public class CompleteSignUpActivity extends AppCompatActivity implements Adapter
     private String phoneNumber;
     private Spinner yearLevelSpinner;
     private String yearLevel;
+    private ImageView imageView;
     private CheckBox chinese, english, math, inso, biology, chemistry, physics, music, drama, film, visualArts, productDesign, computerScience, TOK;
-
+    private String UUID;
     public Uri mImageUri;
     private FirebaseStorage storage;
     private StorageReference storageRef;
@@ -63,19 +68,23 @@ public class CompleteSignUpActivity extends AppCompatActivity implements Adapter
 
         phoneNumberField = findViewById(R.id.UserPhoneNumber);
         yearLevelSpinner = findViewById(R.id.YearLevelSpinner);
+        uploadButton = findViewById(R.id.ImportImagebutton);
         nameEditText = findViewById(R.id.userName);
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.YearLevels, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         yearLevelSpinner.setAdapter(adapter);
         yearLevelSpinner.setOnItemSelectedListener(this);
-        findViewById(R.id.ProfilePictureImageView).setVisibility(View.INVISIBLE);
+        imageView = findViewById(R.id.ProfilePictureImageView);
+        imageView.setVisibility(View.INVISIBLE);
         findViewById(R.id.FinishSignUpButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finishSignUp();
             }
         });
+
         chinese = findViewById(R.id.ChineseCheckBox);
         english = findViewById(R.id.EnglishCheckBox);
         math = findViewById(R.id.MathCheckBox);
@@ -90,6 +99,7 @@ public class CompleteSignUpActivity extends AppCompatActivity implements Adapter
         productDesign = findViewById(R.id.ProductDesignCheckBox);
         computerScience = findViewById(R.id.ComputerScienceCheckBox);
         TOK = findViewById(R.id.TOKCheckBox);
+        UUID = mAuth.getCurrentUser().getUid();
     }
 
     public void upload(View v) {
@@ -112,13 +122,15 @@ public class CompleteSignUpActivity extends AppCompatActivity implements Adapter
         pd.setTitle("Uploading Image...");
         pd.show();
         if (mImageUri != null) {
-            StorageReference fileReference = storageRef.child(mAuth.getCurrentUser().getUid()); // change this to user UUID later on
+            StorageReference fileReference = storageRef.child(UUID);
             mUploadTask = fileReference.putFile(mImageUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             Snackbar.make(findViewById(android.R.id.content), "Image Uploaded.", Snackbar.LENGTH_LONG).show();
                             uploadButton.setVisibility(View.INVISIBLE);
+                            findViewById(R.id.textView4).setVisibility(View.INVISIBLE);
+                            showImage();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -140,6 +152,24 @@ public class CompleteSignUpActivity extends AppCompatActivity implements Adapter
                     });
         }
     }
+    private void showImage(){
+        StorageReference photoRef = storageRef.child(UUID);
+        final long ONE_MEGABYTE = 1024 * 1024;
+        photoRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                imageView.setImageBitmap(bmp);
+                imageView.setVisibility(View.VISIBLE);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Toast.makeText(getApplicationContext(), "No Such file or Path found!!", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         yearLevel = parent.getItemAtPosition(position).toString();
@@ -178,9 +208,10 @@ public class CompleteSignUpActivity extends AppCompatActivity implements Adapter
             subjects.add(TOK.getText().toString());
         phoneNumber = phoneNumberField.getText().toString();
         name = nameEditText.getText().toString();
-        User newUser = new User(name,mAuth.getCurrentUser().getEmail(), subjects, phoneNumber,yearLevel, mAuth.getCurrentUser().getUid());
-        fireStore.collection("users").document(mAuth.getCurrentUser().getUid()).set(newUser);
+        User newUser = new User(name,mAuth.getCurrentUser().getEmail(), subjects, phoneNumber,yearLevel,UUID);
+        fireStore.collection("users").document(UUID).set(newUser);
         startActivity(new Intent(this, HomeActivity.class));
     }
+
 
 }
