@@ -13,6 +13,8 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_market.xml" value="0.21784420289855072" />
         <entry key="app/src/main/res/layout/activity_user_profile.xml" value="0.2719396882349533" />
+        <entry key="app/src/main/res/layout/market_item_row_view.xml" value="0.4632416317549734" />
+        <entry key="app/src/main/res/layout/market_item_row_view_vertical.xml" value="0.20471014492753623" />
       </map>
     </option>
   </component>

@@ -22,7 +22,7 @@
             android:name=".Marco.CompleteSignUpActivity"
             android:exported="true" />
         <activity
-            android:name=".Nicholas.MarketActivity"
+            android:name=".Lucas.MarketActivity"
             android:exported="true" />
         <activity
             android:name=".Fleming.UserProfileActivity"

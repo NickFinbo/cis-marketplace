@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.cis_marketplace.Fleming.MarketActivity;
-import com.example.cis_marketplace.Listing;
 import com.example.cis_marketplace.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
@@ -53,13 +51,13 @@ public class ItemProfileActivity extends AppCompatActivity {
         String priceText = chosen.getPrice().toString();
         String desText = chosen.getDescription();
         String subjectText = chosen.getSubject();
-        String objectPhoto = chosen.;
+
 
         name.setText(nameText);
         price.setText(priceText);
         des.setText(desText);
         subject.setText(subjectText);
-        photoOfObject.setImageURI(objectPhoto);
+
     }
 
 
