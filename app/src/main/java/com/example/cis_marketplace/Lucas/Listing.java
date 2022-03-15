@@ -88,7 +88,7 @@ public class Listing {
         this.ownerID = ownerID;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return  price;
     }
 
@@ -120,7 +120,7 @@ public class Listing {
         this.type = type;
     }
 
-    public int getYearLevel() {
+    public Integer getYearLevel() {
         return yearLevel;
     }
 

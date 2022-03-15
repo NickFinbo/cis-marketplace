@@ -14,6 +14,7 @@ import android.widget.ImageView;
 
 import com.example.cis_marketplace.Fleming.UserProfileActivity;
 import com.example.cis_marketplace.Lucas.Listing;
+import com.example.cis_marketplace.Lucas.MarketActivity;
 import com.example.cis_marketplace.Marco.AuthActivity;
 import com.example.cis_marketplace.Fleming.AddItemActivity;
 import com.example.cis_marketplace.Lucas.ItemProfileActivity;
