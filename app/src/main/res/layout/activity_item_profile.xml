@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".itemActivity">
+    tools:context=".Lucas.ItemProfileActivity">
 
     <ImageView
         android:id="@+id/imageView5"
@@ -36,7 +36,7 @@
         android:layout_marginTop="80dp"
         android:text="Item Name"
         android:textColor="#FAF5F5"
-        android:textSize="30"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +49,7 @@
         android:layout_marginTop="52dp"
         android:layout_marginEnd="30dp"
         android:text="TextView"
-        android:textSize="18"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Name" />
 
@@ -60,7 +60,7 @@
         android:layout_marginTop="56dp"
         android:layout_marginEnd="30dp"
         android:text="TextView"
-        android:textSize="18"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/photo" />
 
@@ -71,7 +71,7 @@
         android:layout_marginTop="52dp"
         android:layout_marginEnd="30dp"
         android:text="TextView"
-        android:textSize="18"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Description" />
 
@@ -83,7 +83,7 @@
         android:layout_marginTop="56dp"
         android:text="Name"
         android:textColor="#8E0707"
-        android:textSize="20"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/photo" />
 
@@ -95,7 +95,7 @@
         android:layout_marginTop="48dp"
         android:text="Description"
         android:textColor="#8E0707"
-        android:textSize="20"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
@@ -107,7 +107,7 @@
         android:layout_marginTop="48dp"
         android:text="Price"
         android:textColor="#8E0707"
-        android:textSize="20"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
@@ -118,7 +118,7 @@
         android:layout_marginTop="52dp"
         android:layout_marginEnd="30dp"
         android:text="TextView"
-        android:textSize="18"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Price" />
 
@@ -130,7 +130,7 @@
         android:layout_marginTop="48dp"
         android:text="Subject"
         android:textColor="#8E0707"
-        android:textSize="20"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
