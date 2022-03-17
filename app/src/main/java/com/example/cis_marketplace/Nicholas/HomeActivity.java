@@ -77,7 +77,7 @@ public class HomeActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         mAuth = FirebaseAuth.getInstance();
-        String user = mAuth.getCurrentUser().getEmail();
+        //String user = mAuth.getCurrentUser().getEmail();
 
         suggestedView = findViewById(R.id.recommendView);
         suggestedView.addOnItemTouchListener(
