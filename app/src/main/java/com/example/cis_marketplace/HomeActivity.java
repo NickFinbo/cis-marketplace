@@ -18,7 +18,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        searchResult = findViewById(R.id.search);
+        searchResult = findViewById(R.id.searchBar);
 
 
     }
