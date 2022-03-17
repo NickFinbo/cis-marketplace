@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.example.cis_marketplace.Fleming.UserProfileActivity;
 import com.example.cis_marketplace.Lucas.Listing;
 import com.example.cis_marketplace.Lucas.MarketActivity;
 import com.example.cis_marketplace.Marco.AuthActivity;
@@ -44,7 +43,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        searchResult = findViewById(R.id.searchBar);
+
         categoryView = findViewById(R.id.categoryView);
         categoryView.addOnItemTouchListener(
                 new RecyclerItemClickListener(this, categoryView ,new RecyclerItemClickListener.OnItemClickListener() {
@@ -79,7 +78,7 @@ public class HomeActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         mAuth = FirebaseAuth.getInstance();
-        //String user = mAuth.getCurrentUser().getEmail();
+        String user = mAuth.getCurrentUser().getEmail();
 
         suggestedView = findViewById(R.id.recommendView);
         suggestedView.addOnItemTouchListener(
@@ -112,7 +111,7 @@ public class HomeActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Listing listing = document.toObject(Listing.class);
-                                    suggestedItems.add(listing);
+                                suggestedItems.add(listing);
 
                             }
 
@@ -175,11 +174,6 @@ public class HomeActivity extends AppCompatActivity {
         //intent.putExtra("items", items);
 
         //startActivity(intent);*/
-    }
-
-    public void goToProfile(View v) {
-        Intent intent = new Intent(this, UserProfileActivity.class);
-        startActivity(intent);
     }
 
 }
