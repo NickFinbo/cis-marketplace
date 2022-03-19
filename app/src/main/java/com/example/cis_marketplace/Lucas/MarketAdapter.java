@@ -1,13 +1,20 @@
 package com.example.cis_marketplace.Lucas;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cis_marketplace.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -47,7 +54,6 @@ public class MarketAdapter extends RecyclerView.Adapter<ListingsHolder>{
         holder.year.setText(yearList.get(position));
         holder.condition.setText(conditionList.get(position));
         holder.price.setText(priceList.get(position));
-
     }
 
     @Override

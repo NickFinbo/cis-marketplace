@@ -38,6 +38,7 @@ public class MarketActivity extends AppCompatActivity implements MarketAdapter.l
     private ArrayList<String> yeadata;
     private ArrayList<String> condata;
     private ArrayList<String> pridata;
+    private ArrayList<String> photodata;
     private EditText searchKey;
 
     @Override
@@ -57,12 +58,16 @@ public class MarketActivity extends AppCompatActivity implements MarketAdapter.l
         yeadata = new ArrayList();
         condata = new ArrayList();
         pridata = new ArrayList();
+        photodata = new ArrayList();
         searchKey = findViewById(R.id.searchBar);
 
         myAdapter = new MarketAdapter(namdata, catdata, yeadata, condata, pridata, this);
         marketRec.setAdapter(myAdapter);
         marketRec.setLayoutManager(new LinearLayoutManager(this));
-        getAndPopulateData();
+        if (searchKey.getText().toString().isEmpty())
+        {
+            getAndPopulateData();
+        }
     }
 
     public void getAndPopulateData() {
@@ -165,6 +170,15 @@ public class MarketActivity extends AppCompatActivity implements MarketAdapter.l
 
     public void search(View v)
     {
+        namdata.clear();
+        catdata.clear();
+        yeadata.clear();
+        condata.clear();
+        pridata.clear();
+        photodata.clear();
+        myAdapter = new MarketAdapter(namdata, catdata, yeadata, condata, pridata, this);
+        marketRec.setAdapter(myAdapter);
+        marketRec.setLayoutManager(new LinearLayoutManager(this));
         getAndPopulateDataAfterSearch();
     }
 
