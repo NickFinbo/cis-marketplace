@@ -13,13 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cis_marketplace.R;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.StorageReference;
@@ -33,13 +29,15 @@ public class ItemProfileActivity extends AppCompatActivity {
     TextView subject;
     TextView itemName;
     ImageView photoOfObject;
-    private String UUID;
-    private FirebaseStorage storage;
-    private StorageReference storageRef;
-    private FirebaseAuth mAuth;
-    private FirebaseFirestore fb;
+
 
     Listing chosen;
+
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore fb;
+    private FirebaseStorage storage;
+    private StorageReference storageRef;
+    Listing listing;
 
 
     @Override
@@ -53,38 +51,30 @@ public class ItemProfileActivity extends AppCompatActivity {
         photoOfObject = findViewById(R.id.photo);
         itemName = findViewById(R.id.itemName);
 
-        chosen = MarketActivity.listing;
+        listing = (Listing) getIntent().getSerializableExtra("Listing");
 
         mAuth = FirebaseAuth.getInstance();
         fb = FirebaseFirestore.getInstance();
         storage = FirebaseStorage.getInstance();
+        storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
 
-        String nameText = chosen.getName();
-        String priceText = chosen.getPrice().toString();
-        String desText = chosen.getDescription();
-        String subjectText = chosen.getSubject();
+        String nameText = listing.getName();
+        String priceText = listing.getPrice().toString();
+        String desText = listing.getDescription();
+        String subjectText = listing.getSubject();
 
-
-        name.setText(nameText);
         itemName.setText(nameText);
+        name.setText(nameText);
         price.setText(priceText);
         des.setText(desText);
         subject.setText(subjectText);
-        fb.collection("listings").whereEqualTo("id", chosen.getId()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful())
-                {
-                    for (DocumentSnapshot ds : task.getResult().getDocuments()) {
-                        Listing ls = ds.toObject(Listing.class);
-                        UUID = ls.getId();
-                    }
-                }
-            }
-        });
 
-        StorageReference photoRef = storageRef.child(UUID);
+        showImage();
+
+    }
+    private void showImage(){
+        StorageReference photoRef = storageRef.child(listing.getId());
         final long ONE_MEGABYTE = 1024 * 1024;
         photoRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
@@ -99,8 +89,6 @@ public class ItemProfileActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "No Such file or Path found!!", Toast.LENGTH_LONG).show();
             }
         });
-
-
     }
 
 
