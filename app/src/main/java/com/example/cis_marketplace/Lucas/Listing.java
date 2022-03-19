@@ -1,6 +1,8 @@
 package com.example.cis_marketplace.Lucas;
 
-public class Listing {
+import java.io.Serializable;
+
+public class Listing implements Serializable {
     String buyerID;
     String condition;
     String description;

@@ -25,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -87,22 +88,21 @@ public class HomeActivity extends AppCompatActivity {
                     public void onItemClick(View view, int position) {
                         //Note position is index
                         //marketClicked(position,suggestedItems);
-                        marketClicked();
+                        Intent intent = new Intent(HomeActivity.this, ItemProfileActivity.class);
+                        intent.putExtra("Listing", (Serializable) suggestedItems.get(position));
+                        HomeActivity.this.startActivity(intent);
                     }
 
                     @Override
                     public void onLongItemClick(View view, int position) {
                         //Don't Long Press
-                        marketClicked();
-
+                        Intent intent = new Intent(HomeActivity.this, ItemProfileActivity.class);
+                        intent.putExtra("Listing", (Serializable) suggestedItems.get(position));
+                        HomeActivity.this.startActivity(intent);
                     }
 
                 })
         );
-
-
-
-
         db.collection("listings")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
