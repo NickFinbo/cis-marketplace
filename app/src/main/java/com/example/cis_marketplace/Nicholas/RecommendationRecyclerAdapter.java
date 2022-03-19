@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class RecommendationRecyclerAdapter extends RecyclerView.Adapter<RecommendationRecyclerViewHolder>{
 
-    ArrayList<Listing> recommendationList = new ArrayList<>();
+    ArrayList<Listing> recommendationList;
 
     public RecommendationRecyclerAdapter(ArrayList<Listing> data){
         recommendationList = data;
@@ -37,6 +37,7 @@ public class RecommendationRecyclerAdapter extends RecyclerView.Adapter<Recommen
         holder.nameText.setText(recommendationList.get(position).getName());
         String priceString = recommendationList.get(position).getPrice()+"";
         holder.priceText.setText(priceString);
+
 
     }
 
