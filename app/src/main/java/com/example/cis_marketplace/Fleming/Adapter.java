@@ -40,7 +40,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
         holder.itemCondition.setText(listings.get(position).getState());
         holder.itemYearLevel.setText(listings.get(position).getYearLevel());
         holder.itemSubject.setText(listings.get(position).getSubject());
-        holder.itemPrice.setText(listings.get(position).getPrice().toString());
+        holder.itemPrice.setText(Double.toString(listings.get(position).getPrice()));
 
     }
 

@@ -1,5 +1,7 @@
 package com.example.cis_marketplace.Lucas;
 
+import java.util.UUID;
+
 public class Listing {
     String buyerID;
     String condition;
@@ -17,11 +19,12 @@ public class Listing {
     public Listing() {
 
     }
-    public Listing(String buyerID, String condition, String description, String id, String imagePath, String name, String ownerID, double price, String state, String subject, String type, int yearLevel) {
-        this.buyerID = buyerID;
+    public Listing(String condition, String description, String imagePath, String name, String ownerID, double price, String state, String subject, String type, int yearLevel) {
+        this.buyerID = null;
         this.condition = condition;
         this.description = description;
-        this.id = id;
+        UUID uid = UUID.randomUUID();
+        this.id = uid.toString();
         this.imagePath = imagePath;
         this.name = name;
         this.ownerID = ownerID;
