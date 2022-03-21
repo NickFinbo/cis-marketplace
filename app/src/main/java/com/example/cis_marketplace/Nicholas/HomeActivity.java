@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.cis_marketplace.Fleming.UserProfileActivity;
 import com.example.cis_marketplace.Lucas.Listing;
 import com.example.cis_marketplace.Lucas.MarketActivity;
 import com.example.cis_marketplace.Marco.AuthActivity;
@@ -141,6 +142,10 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
+    }
+
+    public void profile(View v) {
+        startActivity(new Intent(this, UserProfileActivity.class));
     }
     public void signOut(View v){
         FirebaseAuth.getInstance().signOut();
