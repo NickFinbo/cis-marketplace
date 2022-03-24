@@ -7,44 +7,68 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="99dp"
-        android:layout_height="61dp"
+        android:layout_width="190dp"
+        android:layout_height="176dp"
+        android:backgroundTint="#C56D6D"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
+            android:layout_width="189dp"
             android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="@+id/itemName"
+            app:layout_constraintBottom_toBottomOf="@+id/itemNameEditText"
             app:layout_constraintEnd_toStartOf="@+id/itemYearLevel"
             app:layout_constraintStart_toStartOf="@+id/itemYearLevel"
-            app:layout_constraintTop_toBottomOf="@+id/itemName">
+            app:layout_constraintTop_toBottomOf="@+id/itemNameEditText">
 
             <TextView
-                android:id="@+id/itemCategory"
-                android:layout_width="93dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="11dp"
+                android:id="@+id/itemCategoryEditText"
+                android:layout_width="62dp"
+                android:layout_height="15dp"
                 android:text="TextView"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.125"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/itemName" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.9" />
 
             <TextView
-                android:id="@+id/itemName"
-                android:layout_width="93dp"
-                android:layout_height="26dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="3dp"
+                android:id="@+id/itemCategory2"
+                android:layout_width="65dp"
+                android:layout_height="16dp"
                 android:text="TextView"
-                app:layout_constraintBottom_toTopOf="@+id/itemCategory"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.87"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.906" />
+
+            <TextView
+                android:id="@+id/itemNameEditText"
+                android:layout_width="157dp"
+                android:layout_height="25dp"
+                android:gravity="center"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.493"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.039" />
+
+            <ImageView
+                android:id="@+id/listingImageView"
+                android:layout_width="116dp"
+                android:layout_height="92dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

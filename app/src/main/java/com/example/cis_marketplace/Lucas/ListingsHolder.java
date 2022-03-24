@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cis_marketplace.R;
-import com.google.common.collect.MapMaker;
 
 public class ListingsHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -21,8 +20,8 @@ public class ListingsHolder extends RecyclerView.ViewHolder implements View.OnCl
     public ListingsHolder(@NonNull View itemView, MarketAdapter.listingListener listener1) {
         super(itemView);
 
-        name = itemView.findViewById(R.id.itemName);
-        category = itemView.findViewById(R.id.itemCategory);
+        name = itemView.findViewById(R.id.itemNameEditText);
+        category = itemView.findViewById(R.id.itemCategoryEditText);
         year = itemView.findViewById(R.id.itemYearLevel);
         condition = itemView.findViewById(R.id.itemCondition);
         price = itemView.findViewById(R.id.itemPrice);

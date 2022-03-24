@@ -18,6 +18,7 @@ import com.example.cis_marketplace.Lucas.MarketActivity;
 import com.example.cis_marketplace.Marco.AuthActivity;
 import com.example.cis_marketplace.Fleming.AddItemActivity;
 import com.example.cis_marketplace.Lucas.ItemProfileActivity;
+import com.example.cis_marketplace.Marco.SpacingItemDecorator;
 import com.example.cis_marketplace.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -66,14 +67,9 @@ public class HomeActivity extends AppCompatActivity {
                 })
         );
         Collections.addAll(subjects, "Math AI", "Math AI", "English L&L", "English Lit", "Economics","Computer Science","Geography","History","Psychology","Physics","Biology","Chemistry","Chinese A L&L","Chinese A Lit","Chinese B");
-
         SubjectRecyclerAdapter adapter = new SubjectRecyclerAdapter(subjects);
         categoryView.setAdapter(adapter);
         categoryView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false));
-
-
-
-
 
 
 
@@ -115,7 +111,8 @@ public class HomeActivity extends AppCompatActivity {
                                 suggestedItems.add(listing);
 
                             }
-
+                            SpacingItemDecorator itemDecorator = new SpacingItemDecorator(50);
+                            suggestedView.addItemDecoration(itemDecorator);
                             RecommendationRecyclerAdapter adapter = new RecommendationRecyclerAdapter(suggestedItems);
                             suggestedView.setAdapter(adapter);
 
@@ -129,18 +126,6 @@ public class HomeActivity extends AppCompatActivity {
                 });
 
         suggestedView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false));
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 

@@ -61,11 +61,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            itemName = itemView.findViewById(R.id.itemName);
+            itemName = itemView.findViewById(R.id.itemNameEditText);
             itemPrice = itemView.findViewById(R.id.itemPrice);
             itemCondition = itemView.findViewById(R.id.itemCondition);
             itemYearLevel = itemView.findViewById(R.id.itemYearLevel);
-            itemCategory = itemView.findViewById(R.id.itemCategory);
+            itemCategory = itemView.findViewById(R.id.itemCategoryEditText);
             itemSubject = itemView.findViewById(R.id.itemSubject);
             itemView.setOnClickListener(this);
 

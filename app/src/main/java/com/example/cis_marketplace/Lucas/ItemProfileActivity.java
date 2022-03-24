@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,8 +18,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.StorageReference;
-
-import java.net.URI;
 
 public class ItemProfileActivity extends AppCompatActivity {
     TextView name;
@@ -49,7 +46,7 @@ public class ItemProfileActivity extends AppCompatActivity {
         des = findViewById(R.id.Description);
         subject = findViewById(R.id.Subject);
         photoOfObject = findViewById(R.id.photo);
-        itemName = findViewById(R.id.itemName);
+        itemName = findViewById(R.id.itemNameEditText);
 
         listing = (Listing) getIntent().getSerializableExtra("Listing");
 
@@ -69,12 +66,11 @@ public class ItemProfileActivity extends AppCompatActivity {
         price.setText(priceText);
         des.setText(desText);
         subject.setText(subjectText);
-
         showImage();
 
     }
     private void showImage(){
-        StorageReference photoRef = storageRef.child(listing.getId());
+        StorageReference photoRef = storageRef.child(listing.getID());
         final long ONE_MEGABYTE = 1024 * 1024;
         photoRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override

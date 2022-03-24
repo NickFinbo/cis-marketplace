@@ -32,6 +32,7 @@ import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class AddItemActivity extends AppCompatActivity {
 
@@ -70,6 +71,7 @@ public class AddItemActivity extends AppCompatActivity {
     private StorageTask mUploadTask;
     private Button uploadButton;
 
+    String UUIDref = UUID.randomUUID().toString();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -179,13 +181,13 @@ public class AddItemActivity extends AppCompatActivity {
 
 
                 }
-                else {
-                    subject.setVisibility(View.VISIBLE);
-                    yearLevell.setVisibility(View.VISIBLE);
-                    subjectt.setVisibility(View.VISIBLE);
-                    yearLevel.setVisibility(View.VISIBLE);
-
-                }
+//                else {
+//                    subject.setVisibility(View.VISIBLE);
+//                    yearLevell.setVisibility(View.VISIBLE);
+//                    subjectt.setVisibility(View.VISIBLE);
+//                    yearLevel.setVisibility(View.VISIBLE);
+//
+//                }
             }
 
             @Override
@@ -203,21 +205,26 @@ public class AddItemActivity extends AppCompatActivity {
         String typ = typee.getSelectedItem().toString();
         String subjec = subject.getSelectedItem().toString();
 
+        if (!typee.getSelectedItem().toString().equals("Textbook") && !typee.getSelectedItem().toString().equals("Notes") ) {
+            subjec = null;
+            yearleve = null;
+            conditio = null;
+        }
+
         String nam = namee.getText().toString();
         String desc = descriptionn.getText().toString();
         String pric = pricee.getText().toString();
 
         if(isValid()) {
-                Listing listing = new Listing(conditio, desc, mImageUri.getPath(), nam, mUser.getUid(), Double.parseDouble(pric), conditio, subjec, typ, Integer.parseInt(yearleve));
-                db.collection("listings").document(listing.getId()).set(listing);
+
+                Listing listing = new Listing(conditio, desc, UUIDref, nam, mUser.getUid(), Double.parseDouble(pric), conditio, subjec, typ, Integer.parseInt(yearleve));
+                db.collection("listings").document(listing.getID()).set(listing);
                 Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, HomeActivity.class));
             }
         else {
             Toast.makeText(getApplicationContext(), "Fields incomplete", Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
     public void upload(View v) {
@@ -240,7 +247,7 @@ public class AddItemActivity extends AppCompatActivity {
         pd.setTitle("Uploading Image...");
         pd.show();
         if (mImageUri != null) {
-            StorageReference fileReference = storageRef.child("user uuid here"); // change this to user UUID later on
+            StorageReference fileReference = storageRef.child(UUIDref); // change this to user UUID later on
             mUploadTask = fileReference.putFile(mImageUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
