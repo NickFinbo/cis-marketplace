@@ -15,57 +15,78 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/itemName"
+            app:layout_constraintBottom_toBottomOf="@+id/itemNameEditText"
             app:layout_constraintEnd_toStartOf="@+id/itemYearLevel"
             app:layout_constraintStart_toStartOf="@+id/itemYearLevel"
-            app:layout_constraintTop_toBottomOf="@+id/itemName">
+            app:layout_constraintTop_toBottomOf="@+id/itemNameEditText">
 
             <TextView
-                android:id="@+id/itemCategory"
+                android:id="@+id/itemCategoryEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="10dp"
                 android:text="TextView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/itemYearLevel" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/itemImage" />
 
             <TextView
                 android:id="@+id/itemYearLevel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="9dp"
                 android:text="TextView"
-                app:layout_constraintStart_toEndOf="@+id/itemCategory"
-                app:layout_constraintTop_toBottomOf="@+id/itemName" />
+                app:layout_constraintStart_toEndOf="@+id/itemCategoryEditText"
+                app:layout_constraintTop_toBottomOf="@+id/itemNameEditText" />
 
             <TextView
-                android:id="@+id/itemName"
+                android:id="@+id/itemNameEditText"
                 android:layout_width="218dp"
                 android:layout_height="22dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="6dp"
                 android:text="TextView"
-                android:textSize="16dp"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/itemPrice"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/itemImage"
+                android:layout_width="0dp"
+                android:layout_height="68dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/itemNameEditText"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/itemCondition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="10dp"
                 android:text="TextView"
-                app:layout_constraintStart_toEndOf="@+id/itemYearLevel"
-                app:layout_constraintTop_toBottomOf="@+id/itemName" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/itemYearLevel" />
+
+            <TextView
+                android:id="@+id/itemSubject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/itemCondition" />
 
             <TextView
                 android:id="@+id/itemPrice"
                 android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_marginEnd="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="19dp"
                 android:text="TextView"
-                android:textSize="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

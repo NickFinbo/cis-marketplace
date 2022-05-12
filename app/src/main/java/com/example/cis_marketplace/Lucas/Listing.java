@@ -7,7 +7,6 @@ public class Listing implements Serializable {
     String condition;
     String description;
     String id;
-    String imagePath;
     String name;
     String ownerID;
     double price;
@@ -19,12 +18,11 @@ public class Listing implements Serializable {
     public Listing() {
 
     }
-    public Listing(String buyerID, String condition, String description, String id, String imagePath, String name, String ownerID, double price, String state, String subject, String type, int yearLevel) {
-        this.buyerID = buyerID;
+    public Listing(String condition, String description, String id, String name, String ownerID, double price, String state, String subject, String type, int yearLevel) {
+        this.buyerID = null;
         this.condition = condition;
         this.description = description;
         this.id = id;
-        this.imagePath = imagePath;
         this.name = name;
         this.ownerID = ownerID;
         this.price = price;
@@ -58,20 +56,12 @@ public class Listing implements Serializable {
         this.description = description;
     }
 
-    public String getId() {
+    public String getID() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setID(String id) {
         this.id = id;
-    }
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
     }
 
     public String getName() {

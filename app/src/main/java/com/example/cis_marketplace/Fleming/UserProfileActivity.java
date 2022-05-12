@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -36,7 +37,10 @@ public class UserProfileActivity extends AppCompatActivity implements Adapter.It
     FirebaseFirestore db;
     RecyclerView rec;
     Adapter adap;
-    int amount = 0;
+
+    int avail = 0;
+    int sol = 0;
+    int res = 0;
     TextView username;
 
     Spinner category;
@@ -70,29 +74,54 @@ public class UserProfileActivity extends AppCompatActivity implements Adapter.It
             for (QueryDocumentSnapshot ds : Objects.requireNonNull(task.getResult())) {
                 Listing bob = ds.toObject(Listing.class);
                 lists.add(bob);
-                amount++;
-
             }
         }
     });
         for(int i = 0;i<lists.size();i++) {
             if(lists.get(i).getState().equals("Available")) {
                 available.add(lists.get(i));
+                avail++;
             }
             else if(lists.get(i).getState().equals("Sold")) {
                 sold.add(lists.get(i));
+                sol++;
             }
             else if(lists.get(i).getState().equals("Reserved")) {
                 reserved.add(lists.get(i));
+                res++;
             }
         }
-        adap = new Adapter(lists, amount);
+        UserProfileActivity c = this;
         rec.setLayoutManager(new LinearLayoutManager(this));
-        adap.setClickListener(this);
-        rec.setAdapter(adap);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rec.getContext(), LinearLayoutManager.HORIZONTAL);
         rec.addItemDecoration(dividerItemDecoration);
 
+        category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if(category.getSelectedItem().toString().equals("Available")) {
+                    adap = new Adapter(available, avail);
+                    adap.setClickListener(c);
+                    rec.setAdapter(adap);
+                }
+                else if(category.getSelectedItem().toString().equals("Reserved")) {
+                    adap = new Adapter(reserved, res);
+                    adap.setClickListener(c);
+                    rec.setAdapter(adap);
+                }
+                else if(category.getSelectedItem().toString().equals("Sold")) {
+                    adap = new Adapter(sold, sol);
+                    adap.setClickListener(c);
+                    rec.setAdapter(adap);
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+
+            }
+        });
 }
 
     public void signOut(View v) {
