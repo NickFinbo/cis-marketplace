@@ -38,7 +38,9 @@ public class MarketActivity extends AppCompatActivity implements MarketAdapter.l
     private ArrayList<String> yeadata;
     private ArrayList<String> condata;
     private ArrayList<String> pridata;
+    private ArrayList<String> photodata;
     private EditText searchKey;
+    private String sKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,18 +59,65 @@ public class MarketActivity extends AppCompatActivity implements MarketAdapter.l
         yeadata = new ArrayList();
         condata = new ArrayList();
         pridata = new ArrayList();
+        photodata = new ArrayList();
         searchKey = findViewById(R.id.searchBar);
 
         myAdapter = new MarketAdapter(namdata, catdata, yeadata, condata, pridata, this);
         marketRec.setAdapter(myAdapter);
         marketRec.setLayoutManager(new LinearLayoutManager(this));
-        getAndPopulateData();
+        if (sKey != null)
+        {
+            getAndPopulateDataAfterSearch();
+        }
+        else
+        {
+            getAndPopulateData();
+        }
     }
 
     public void getAndPopulateData() {
+        firebase.collection("listings")
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful())
+                {
+                    for (DocumentSnapshot ds : task.getResult().getDocuments()) {
+                        Listing ls = ds.toObject(Listing.class);
+                        listingsList.add(ls);
+                    }
+
+                    for (Listing eachListing: listingsList) {
+                        String eachItem = eachListing.getName();
+                        namdata.add(eachItem);
+
+                        String eachCategory = eachListing.getType();
+                        catdata.add(eachCategory);
+
+                        String eachYear = eachListing.getYearLevel().toString();
+                        yeadata.add(eachYear);
+
+                        String eachCondition = eachListing.getCondition();
+                        condata.add(eachCondition);
+
+                        String eachList = eachListing.getPrice().toString();
+                        pridata.add(eachList);
+                    }
+
+
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "you don't have anythings yet", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+    }
+
+    public void getAndPopulateDataAfterSearch(){
         if (!searchKey.getText().toString().isEmpty())
         {
-            firebase.collection("listings")
+            firebase.collection("listings").whereEqualTo("subject", sKey)
                     .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -76,7 +125,14 @@ public class MarketActivity extends AppCompatActivity implements MarketAdapter.l
                     {
                         for (DocumentSnapshot ds : task.getResult().getDocuments()) {
                             Listing ls = ds.toObject(Listing.class);
-                            listingsList.add(ls);
+                            if (ls.getName().toLowerCase() == searchKey.getText().toString().toLowerCase() ||
+                                    ls.getType().toLowerCase() == searchKey.getText().toString().toLowerCase() ||
+                                    ls.getYearLevel().toString() == searchKey.getText().toString().toLowerCase() ||
+                                    ls.getCondition().toLowerCase() == searchKey.getText().toString().toLowerCase() ||
+                                    ls.getPrice().toString() == searchKey.getText().toString().toLowerCase())
+                            {
+                                listingsList.add(ls);
+                            }
                         }
 
                         for (Listing eachListing: listingsList) {
@@ -104,13 +160,96 @@ public class MarketActivity extends AppCompatActivity implements MarketAdapter.l
 
                 }
             });
-        }
-    }
 
-    public void getAndPopulateDataAfterSearch(){
-        if (searchKey.getText().toString().isEmpty())
-        {
-            firebase.collection("listings")
+            firebase.collection("listings").whereEqualTo("type", sKey)
+                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful())
+                    {
+                        for (DocumentSnapshot ds : task.getResult().getDocuments()) {
+                            Listing ls = ds.toObject(Listing.class);
+                            if (ls.getName().toLowerCase() == searchKey.getText().toString().toLowerCase() ||
+                                    ls.getType().toLowerCase() == searchKey.getText().toString().toLowerCase() ||
+                                    ls.getYearLevel().toString() == searchKey.getText().toString().toLowerCase() ||
+                                    ls.getCondition().toLowerCase() == searchKey.getText().toString().toLowerCase() ||
+                                    ls.getPrice().toString() == searchKey.getText().toString().toLowerCase())
+                            {
+                                listingsList.add(ls);
+                            }
+                        }
+
+                        for (Listing eachListing: listingsList) {
+                            String eachItem = eachListing.getName();
+                            namdata.add(eachItem);
+
+                            String eachCategory = eachListing.getType();
+                            catdata.add(eachCategory);
+
+                            String eachYear = eachListing.getYearLevel().toString();
+                            yeadata.add(eachYear);
+
+                            String eachCondition = eachListing.getCondition();
+                            condata.add(eachCondition);
+
+                            String eachList = eachListing.getPrice().toString();
+                            pridata.add(eachList);
+                        }
+
+
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), "you don't have anythings yet", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            });
+
+            firebase.collection("listings").whereEqualTo("yearLevel", sKey)
+                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful())
+                    {
+                        for (DocumentSnapshot ds : task.getResult().getDocuments()) {
+                            Listing ls = ds.toObject(Listing.class);
+                            if (ls.getName().toLowerCase() == searchKey.getText().toString().toLowerCase() ||
+                                    ls.getType().toLowerCase() == searchKey.getText().toString().toLowerCase() ||
+                                    ls.getYearLevel().toString() == searchKey.getText().toString().toLowerCase() ||
+                                    ls.getCondition().toLowerCase() == searchKey.getText().toString().toLowerCase() ||
+                                    ls.getPrice().toString() == searchKey.getText().toString().toLowerCase())
+                            {
+                                listingsList.add(ls);
+                            }
+                        }
+
+                        for (Listing eachListing: listingsList) {
+                            String eachItem = eachListing.getName();
+                            namdata.add(eachItem);
+
+                            String eachCategory = eachListing.getType();
+                            catdata.add(eachCategory);
+
+                            String eachYear = eachListing.getYearLevel().toString();
+                            yeadata.add(eachYear);
+
+                            String eachCondition = eachListing.getCondition();
+                            condata.add(eachCondition);
+
+                            String eachList = eachListing.getPrice().toString();
+                            pridata.add(eachList);
+                        }
+
+
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), "There's nothing yet", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            });
+
+            firebase.collection("listings").whereEqualTo("name", sKey)
                     .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -165,7 +304,17 @@ public class MarketActivity extends AppCompatActivity implements MarketAdapter.l
 
     public void search(View v)
     {
-        getAndPopulateDataAfterSearch();
+        String key = searchKey.getText().toString();
+        namdata.clear();
+        catdata.clear();
+        yeadata.clear();
+        condata.clear();
+        pridata.clear();
+        photodata.clear();
+        myAdapter = new MarketAdapter(namdata, catdata, yeadata, condata, pridata, this);
+        marketRec.setAdapter(myAdapter);
+        marketRec.setLayoutManager(new LinearLayoutManager(this));
+        sKey = key;
     }
 
 

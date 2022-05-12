@@ -23,6 +23,7 @@ import com.example.cis_marketplace.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -46,6 +47,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         categoryView = findViewById(R.id.categoryView);
         categoryView.addOnItemTouchListener(
@@ -66,6 +68,8 @@ public class HomeActivity extends AppCompatActivity {
 
                 })
         );
+
+        //if()
         Collections.addAll(subjects, "Math AI", "Math AI", "English L&L", "English Lit", "Economics","Computer Science","Geography","History","Psychology","Physics","Biology","Chemistry","Chinese A L&L","Chinese A Lit","Chinese B");
         SubjectRecyclerAdapter adapter = new SubjectRecyclerAdapter(subjects);
         categoryView.setAdapter(adapter);
@@ -74,9 +78,6 @@ public class HomeActivity extends AppCompatActivity {
 
 
         db = FirebaseFirestore.getInstance();
-
-        mAuth = FirebaseAuth.getInstance();
-        String user = mAuth.getCurrentUser().getEmail();
 
         suggestedView = findViewById(R.id.recommendView);
         suggestedView.addOnItemTouchListener(
@@ -150,6 +151,9 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(new Intent(this, AddItemActivity.class));
     }
     public void marketClicked(){
+        startActivity(new Intent(this, MarketActivity.class));
+    }
+    public void marketButtonClicked(View V){
         startActivity(new Intent(this, MarketActivity.class));
     }
 

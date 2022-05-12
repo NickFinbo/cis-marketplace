@@ -40,6 +40,7 @@
         android:id="@+id/homebutton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="goToHome"
         android:text="home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
