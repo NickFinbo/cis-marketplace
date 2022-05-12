@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="430dp"
-        android:layout_height="192dp"
+        android:layout_width="387dp"
+        android:layout_height="179dp"
         android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.526"
@@ -24,7 +24,7 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
+        android:layout_marginTop="120dp"
         android:text="CIS Marketplace"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -38,7 +38,7 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="232dp"
+        android:layout_marginTop="200dp"
         android:text="Save on textbooks, subscriptions, and more!"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
@@ -63,7 +63,7 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="9dp"
         android:text="Subject Categories"
         android:textColor="#9E0917"
         android:textSize="16sp"
@@ -71,7 +71,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/recommendView" />
 
     <TextView
         android:id="@+id/textView7"
@@ -101,12 +101,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categoryView"
-        android:layout_width="376dp"
-        android:layout_height="110dp"
+        android:layout_width="378dp"
+        android:layout_height="71dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -139,8 +136,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recommendView"
-        android:layout_width="401dp"
-        android:layout_height="171dp"
+        android:layout_width="406dp"
+        android:layout_height="133dp"
         android:layout_marginStart="1dp"
         app:layout_constraintBottom_toTopOf="@+id/textView9"
         app:layout_constraintEnd_toEndOf="parent"
