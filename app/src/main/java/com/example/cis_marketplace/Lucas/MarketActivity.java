@@ -40,6 +40,7 @@ public class MarketActivity extends AppCompatActivity implements MarketAdapter.l
     private ArrayList<String> pridata;
     private ArrayList<String> photodata;
     private EditText searchKey;
+    private String sKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +65,14 @@ public class MarketActivity extends AppCompatActivity implements MarketAdapter.l
         myAdapter = new MarketAdapter(namdata, catdata, yeadata, condata, pridata, this);
         marketRec.setAdapter(myAdapter);
         marketRec.setLayoutManager(new LinearLayoutManager(this));
-        getAndPopulateData();
+        if (sKey != null)
+        {
+            getAndPopulateDataAfterSearch();
+        }
+        else
+        {
+            getAndPopulateData();
+        }
     }
 
     public void getAndPopulateData() {
@@ -109,7 +117,7 @@ public class MarketActivity extends AppCompatActivity implements MarketAdapter.l
     public void getAndPopulateDataAfterSearch(){
         if (!searchKey.getText().toString().isEmpty())
         {
-            firebase.collection("listings").whereEqualTo("subject", searchKey.getText().toString())
+            firebase.collection("listings").whereEqualTo("subject", sKey)
                     .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -153,7 +161,7 @@ public class MarketActivity extends AppCompatActivity implements MarketAdapter.l
                 }
             });
 
-            firebase.collection("listings").whereEqualTo("type", searchKey.getText().toString())
+            firebase.collection("listings").whereEqualTo("type", sKey)
                     .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -197,7 +205,7 @@ public class MarketActivity extends AppCompatActivity implements MarketAdapter.l
                 }
             });
 
-            firebase.collection("listings").whereEqualTo("yearLevel", searchKey.getText().toString())
+            firebase.collection("listings").whereEqualTo("yearLevel", sKey)
                     .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -241,7 +249,7 @@ public class MarketActivity extends AppCompatActivity implements MarketAdapter.l
                 }
             });
 
-            firebase.collection("listings").whereEqualTo("name", searchKey.getText().toString())
+            firebase.collection("listings").whereEqualTo("name", sKey)
                     .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -296,6 +304,7 @@ public class MarketActivity extends AppCompatActivity implements MarketAdapter.l
 
     public void search(View v)
     {
+        String key = searchKey.getText().toString();
         namdata.clear();
         catdata.clear();
         yeadata.clear();
@@ -305,7 +314,7 @@ public class MarketActivity extends AppCompatActivity implements MarketAdapter.l
         myAdapter = new MarketAdapter(namdata, catdata, yeadata, condata, pridata, this);
         marketRec.setAdapter(myAdapter);
         marketRec.setLayoutManager(new LinearLayoutManager(this));
-        getAndPopulateDataAfterSearch();
+        sKey = key;
     }
 
 
