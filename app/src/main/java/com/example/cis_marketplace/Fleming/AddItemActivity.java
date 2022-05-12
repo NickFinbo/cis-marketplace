@@ -217,7 +217,7 @@ public class AddItemActivity extends AppCompatActivity {
 
         if(isValid()) {
 
-                Listing listing = new Listing(conditio, desc, UUIDref, nam, mUser.getUid(), Double.parseDouble(pric), conditio, subjec, typ, Integer.parseInt(yearleve));
+                Listing listing = new Listing(conditio, desc, UUIDref, nam, mUser.getUid(), Double.parseDouble(pric), "available", subjec, typ, Integer.parseInt(yearleve));
                 db.collection("listings").document(listing.getID()).set(listing);
                 Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, HomeActivity.class));
@@ -274,6 +274,8 @@ public class AddItemActivity extends AppCompatActivity {
                         }
                     });
         }
+        TextView imageEditText = findViewById(R.id.addImageEditText);
+        imageEditText.setText("Image Uploaded");
     }
     public void homeUI(View v){
         startActivity(new Intent(this, HomeActivity.class));

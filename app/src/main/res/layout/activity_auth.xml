@@ -23,7 +23,6 @@
         android:id="@+id/GoogleSignInButton"
         android:layout_width="193dp"
         android:layout_height="62dp"
-        android:onClick="googleSignIn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +28,7 @@ public class ItemProfileActivity extends AppCompatActivity {
     TextView subject;
     TextView itemName;
     ImageView photoOfObject;
+    Button reserveButton;
 
 
     Listing chosen;
@@ -46,7 +49,7 @@ public class ItemProfileActivity extends AppCompatActivity {
         des = findViewById(R.id.Description);
         subject = findViewById(R.id.Subject);
         photoOfObject = findViewById(R.id.photo);
-        itemName = findViewById(R.id.itemNameEditText);
+        reserveButton = findViewById(R.id.reserveButton);
 
         listing = (Listing) getIntent().getSerializableExtra("Listing");
 
@@ -61,12 +64,13 @@ public class ItemProfileActivity extends AppCompatActivity {
         String desText = listing.getDescription();
         String subjectText = listing.getSubject();
 
-        itemName.setText(nameText);
         name.setText(nameText);
-        price.setText(priceText);
+        price.setText("$"+priceText);
         des.setText(desText);
         subject.setText(subjectText);
         showImage();
+
+        
 
     }
     private void showImage(){
@@ -86,6 +90,16 @@ public class ItemProfileActivity extends AppCompatActivity {
             }
         });
     }
-
-
+    public void reservedClicked(View v){
+        if(listing.getState().equals("available")){
+            fb.collection("listings").document(listing.getID()).update("state","reserved", "buyerID",mAuth.getUid());
+            reserveButton.setBackgroundColor(Color.GRAY);
+            Toast.makeText(this,"Successfully Reserved", Toast.LENGTH_LONG).show();
+        }
+        if(listing.getState().equals("reserved")){
+            reserveButton.setBackgroundColor(Color.GRAY);
+            reserveButton.setText("Reserved");
+            Toast.makeText(this,"This item is reserved by you or someone else", Toast.LENGTH_LONG).show();
+        }
+    }
 }

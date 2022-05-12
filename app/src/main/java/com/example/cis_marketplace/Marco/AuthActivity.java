@@ -42,20 +42,20 @@ public class AuthActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        mAuth = FirebaseAuth.getInstance();
 
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
         setContentView(R.layout.activity_auth);
 
 
         fireStore = FirebaseFirestore.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("1020381386559-1mt45vg5sp3r0hm7qhdrfquvsc2o7lir.apps.googleusercontent.com")
+                .requestIdToken("1020381386559-eq1nfhaie1unesb5dlcc1fqdlh15n3rs.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
 
         SignInButton googleSignInButton = findViewById(R.id.GoogleSignInButton);
         googleSignInButton.setSize(SignInButton.SIZE_STANDARD);
@@ -80,17 +80,14 @@ public class AuthActivity extends AppCompatActivity {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
                 firebaseAuthWithGoogle(account.getIdToken());
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                updateUI(user);
             } catch (ApiException e) {
                 Log.w(TAG, "Google sign in failed", e);
             }
         }
         else{
-            Toast.makeText(AuthActivity.this, "wrong code", Toast.LENGTH_LONG).show();
+            Toast.makeText(AuthActivity.this, "google sign in error", Toast.LENGTH_LONG).show();
         }
     }
-
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -125,4 +122,3 @@ public class AuthActivity extends AppCompatActivity {
     }
 
 }
-
