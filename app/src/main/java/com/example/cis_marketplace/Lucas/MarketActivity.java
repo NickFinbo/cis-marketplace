@@ -1,326 +1,142 @@
 package com.example.cis_marketplace.Lucas;
-
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.EditText;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
-
+import com.example.cis_marketplace.Marco.SpacingItemDecorator;
 import com.example.cis_marketplace.Nicholas.HomeActivity;
+import com.example.cis_marketplace.Nicholas.RecommendationRecyclerAdapter;
+import com.example.cis_marketplace.Nicholas.RecyclerItemClickListener;
 import com.example.cis_marketplace.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MarketActivity extends AppCompatActivity implements MarketAdapter.listingListener{
-    private FirebaseAuth mAuth;
-    private FirebaseUser user;
-    public FirebaseFirestore firebase;
-    RecyclerView marketRec;
-    public static Listing listing;
-    private MarketAdapter myAdapter;
-    private ArrayList<Listing> listingsList;
-    private ArrayList<String> namdata;
-    private ArrayList<String> catdata;
-    private ArrayList<String> yeadata;
-    private ArrayList<String> condata;
-    private ArrayList<String> pridata;
-    private ArrayList<String> photodata;
-    private EditText searchKey;
-    private String sKey;
+public class MarketActivity extends AppCompatActivity {
+    RecyclerView marketView;
+    FirebaseFirestore db;
+    FirebaseAuth mAuth;
+    ArrayList<Listing> marketItems = new ArrayList<>();
+    Button constrainButton;
+    TextView constrainText;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market);
-        marketRec = findViewById(R.id.marketRec);
+        marketView = findViewById(R.id.marketView);
+        db = FirebaseFirestore.getInstance();
+        constrainButton = findViewById(R.id.constrainButton);
+        constrainText = findViewById(R.id.constrainText);
+        System.out.println(constrainButton.getText());
 
-        mAuth = FirebaseAuth.getInstance();
-        firebase = FirebaseFirestore.getInstance();
-        listingsList = new ArrayList<>();
-        user = mAuth.getCurrentUser();
 
 
-        namdata = new ArrayList();
-        catdata = new ArrayList();
-        yeadata = new ArrayList();
-        condata = new ArrayList();
-        pridata = new ArrayList();
-        photodata = new ArrayList();
-        searchKey = findViewById(R.id.searchBar);
 
-        myAdapter = new MarketAdapter(namdata, catdata, yeadata, condata, pridata, this);
-        marketRec.setAdapter(myAdapter);
-        marketRec.setLayoutManager(new LinearLayoutManager(this));
-        if (sKey != null)
-        {
-            getAndPopulateDataAfterSearch();
-        }
-        else
-        {
-            getAndPopulateData();
-        }
-    }
 
-    public void getAndPopulateData() {
-        firebase.collection("listings")
-                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful())
-                {
-                    for (DocumentSnapshot ds : task.getResult().getDocuments()) {
-                        Listing ls = ds.toObject(Listing.class);
-                        listingsList.add(ls);
+
+        marketView = findViewById(R.id.marketView);
+        marketView.addOnItemTouchListener(
+                new RecyclerItemClickListener(this, marketView ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        //Note position is index
+                        //marketClicked(position,suggestedItems);
+                        Intent intent = new Intent(MarketActivity.this, ItemProfileActivity.class);
+                        intent.putExtra("Listing", (Serializable) marketItems.get(position));
+                        MarketActivity.this.startActivity(intent);
                     }
 
-                    for (Listing eachListing: listingsList) {
-                        String eachItem = eachListing.getName();
-                        namdata.add(eachItem);
-
-                        String eachCategory = eachListing.getType();
-                        catdata.add(eachCategory);
-
-                        String eachYear = eachListing.getYearLevel().toString();
-                        yeadata.add(eachYear);
-
-                        String eachCondition = eachListing.getCondition();
-                        condata.add(eachCondition);
-
-                        String eachList = eachListing.getPrice().toString();
-                        pridata.add(eachList);
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+                        //Don't Long Press
+                        Intent intent = new Intent(MarketActivity.this, ItemProfileActivity.class);
+                        intent.putExtra("Listing", (Serializable) marketItems.get(position));
+                        MarketActivity.this.startActivity(intent);
                     }
 
+                })
+        );
+        db.collection("listings")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Listing listing = document.toObject(Listing.class);
+                                marketItems.add(listing);
 
-
-                } else {
-                    Toast.makeText(getApplicationContext(), "you don't have anythings yet", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
-    }
-
-    public void getAndPopulateDataAfterSearch(){
-        if (!searchKey.getText().toString().isEmpty())
-        {
-            firebase.collection("listings").whereEqualTo("subject", sKey)
-                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if (task.isSuccessful())
-                    {
-                        for (DocumentSnapshot ds : task.getResult().getDocuments()) {
-                            Listing ls = ds.toObject(Listing.class);
-                            if (ls.getName().toLowerCase() == searchKey.getText().toString().toLowerCase() ||
-                                    ls.getType().toLowerCase() == searchKey.getText().toString().toLowerCase() ||
-                                    ls.getYearLevel().toString() == searchKey.getText().toString().toLowerCase() ||
-                                    ls.getCondition().toLowerCase() == searchKey.getText().toString().toLowerCase() ||
-                                    ls.getPrice().toString() == searchKey.getText().toString().toLowerCase())
-                            {
-                                listingsList.add(ls);
                             }
-                        }
+                            SpacingItemDecorator itemDecorator = new SpacingItemDecorator(50);
+                            marketView.addItemDecoration(itemDecorator);
+                            RecommendationRecyclerAdapter adapter = new RecommendationRecyclerAdapter(marketItems);
+                            marketView.setAdapter(adapter);
 
-                        for (Listing eachListing: listingsList) {
-                            String eachItem = eachListing.getName();
-                            namdata.add(eachItem);
-
-                            String eachCategory = eachListing.getType();
-                            catdata.add(eachCategory);
-
-                            String eachYear = eachListing.getYearLevel().toString();
-                            yeadata.add(eachYear);
-
-                            String eachCondition = eachListing.getCondition();
-                            condata.add(eachCondition);
-
-                            String eachList = eachListing.getPrice().toString();
-                            pridata.add(eachList);
+                        } else {
+                            Log.d("TAG", "Error getting documents: ", task.getException());
                         }
 
 
-
-                    } else {
-                        Toast.makeText(getApplicationContext(), "you don't have anythings yet", Toast.LENGTH_SHORT).show();
                     }
 
-                }
-            });
+                });
 
-            firebase.collection("listings").whereEqualTo("type", sKey)
-                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if (task.isSuccessful())
-                    {
-                        for (DocumentSnapshot ds : task.getResult().getDocuments()) {
-                            Listing ls = ds.toObject(Listing.class);
-                            if (ls.getName().toLowerCase() == searchKey.getText().toString().toLowerCase() ||
-                                    ls.getType().toLowerCase() == searchKey.getText().toString().toLowerCase() ||
-                                    ls.getYearLevel().toString() == searchKey.getText().toString().toLowerCase() ||
-                                    ls.getCondition().toLowerCase() == searchKey.getText().toString().toLowerCase() ||
-                                    ls.getPrice().toString() == searchKey.getText().toString().toLowerCase())
-                            {
-                                listingsList.add(ls);
-                            }
-                        }
-
-                        for (Listing eachListing: listingsList) {
-                            String eachItem = eachListing.getName();
-                            namdata.add(eachItem);
-
-                            String eachCategory = eachListing.getType();
-                            catdata.add(eachCategory);
-
-                            String eachYear = eachListing.getYearLevel().toString();
-                            yeadata.add(eachYear);
-
-                            String eachCondition = eachListing.getCondition();
-                            condata.add(eachCondition);
-
-                            String eachList = eachListing.getPrice().toString();
-                            pridata.add(eachList);
-                        }
-
-
-
-                    } else {
-                        Toast.makeText(getApplicationContext(), "you don't have anythings yet", Toast.LENGTH_SHORT).show();
-                    }
-
-                }
-            });
-
-            firebase.collection("listings").whereEqualTo("yearLevel", sKey)
-                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if (task.isSuccessful())
-                    {
-                        for (DocumentSnapshot ds : task.getResult().getDocuments()) {
-                            Listing ls = ds.toObject(Listing.class);
-                            if (ls.getName().toLowerCase() == searchKey.getText().toString().toLowerCase() ||
-                                    ls.getType().toLowerCase() == searchKey.getText().toString().toLowerCase() ||
-                                    ls.getYearLevel().toString() == searchKey.getText().toString().toLowerCase() ||
-                                    ls.getCondition().toLowerCase() == searchKey.getText().toString().toLowerCase() ||
-                                    ls.getPrice().toString() == searchKey.getText().toString().toLowerCase())
-                            {
-                                listingsList.add(ls);
-                            }
-                        }
-
-                        for (Listing eachListing: listingsList) {
-                            String eachItem = eachListing.getName();
-                            namdata.add(eachItem);
-
-                            String eachCategory = eachListing.getType();
-                            catdata.add(eachCategory);
-
-                            String eachYear = eachListing.getYearLevel().toString();
-                            yeadata.add(eachYear);
-
-                            String eachCondition = eachListing.getCondition();
-                            condata.add(eachCondition);
-
-                            String eachList = eachListing.getPrice().toString();
-                            pridata.add(eachList);
-                        }
-
-
-
-                    } else {
-                        Toast.makeText(getApplicationContext(), "There's nothing yet", Toast.LENGTH_SHORT).show();
-                    }
-
-                }
-            });
-
-            firebase.collection("listings").whereEqualTo("name", sKey)
-                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if (task.isSuccessful())
-                    {
-                        for (DocumentSnapshot ds : task.getResult().getDocuments()) {
-                            Listing ls = ds.toObject(Listing.class);
-                            if (ls.getName().toLowerCase() == searchKey.getText().toString().toLowerCase() ||
-                                    ls.getType().toLowerCase() == searchKey.getText().toString().toLowerCase() ||
-                                    ls.getYearLevel().toString() == searchKey.getText().toString().toLowerCase() ||
-                                    ls.getCondition().toLowerCase() == searchKey.getText().toString().toLowerCase() ||
-                                    ls.getPrice().toString() == searchKey.getText().toString().toLowerCase())
-                            {
-                                listingsList.add(ls);
-                            }
-                        }
-
-                        for (Listing eachListing: listingsList) {
-                            String eachItem = eachListing.getName();
-                            namdata.add(eachItem);
-
-                            String eachCategory = eachListing.getType();
-                            catdata.add(eachCategory);
-
-                            String eachYear = eachListing.getYearLevel().toString();
-                            yeadata.add(eachYear);
-
-                            String eachCondition = eachListing.getCondition();
-                            condata.add(eachCondition);
-
-                            String eachList = eachListing.getPrice().toString();
-                            pridata.add(eachList);
-                        }
-
-
-
-                    } else {
-                        Toast.makeText(getApplicationContext(), "you don't have anythings yet", Toast.LENGTH_SHORT).show();
-                    }
-
-                }
-            });
-        }
-
+        marketView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
     }
 
-    public void listingOnClick(int p) {
-        listing = listingsList.get(p);
-        startActivity(new Intent(this, ItemProfileActivity.class));
+    public void constrainClicked(View V){
+        marketItems.clear();
+        db.collection("listings")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Listing listing = document.toObject(Listing.class);
+                                System.out.println(constrainButton.getText());
+                                System.out.println(listing.getName());
+                                if(listing.getName().contains(constrainText.getText())) {
+                                    //Toast.makeText(getApplicationContext(), listing.getName(), Toast.LENGTH_SHORT).show();
+                                    marketItems.add(listing);
+                                }
+                            }
+                            SpacingItemDecorator itemDecorator = new SpacingItemDecorator(50);
+                            marketView.addItemDecoration(itemDecorator);
+                            RecommendationRecyclerAdapter adapter = new RecommendationRecyclerAdapter(marketItems);
+                            marketView.setAdapter(adapter);
 
-    }
-
-    public void search(View v)
-    {
-        String key = searchKey.getText().toString();
-        namdata.clear();
-        catdata.clear();
-        yeadata.clear();
-        condata.clear();
-        pridata.clear();
-        photodata.clear();
-        myAdapter = new MarketAdapter(namdata, catdata, yeadata, condata, pridata, this);
-        marketRec.setAdapter(myAdapter);
-        marketRec.setLayoutManager(new LinearLayoutManager(this));
-        sKey = key;
-    }
+                        } else {
+                            Log.d("TAG", "Error getting documents: ", task.getException());
+                        }
 
 
+                    }
 
-    public void goToHome(View v)
-    {
-        startActivity(new Intent(this, HomeActivity.class));
+                });
+
+        marketView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
     }
 }

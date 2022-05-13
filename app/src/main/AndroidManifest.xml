@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cismarketplace" >
         <activity
+            android:name=".Lucas.MarketActivity"
+            android:exported="true" />
+        <activity
             android:name=".Fleming.AddItemActivity"
             android:exported="true" />
         <activity
@@ -20,9 +23,6 @@
             android:exported="true" />
         <activity
             android:name=".Marco.CompleteSignUpActivity"
-            android:exported="true" />
-        <activity
-            android:name=".Lucas.MarketActivity"
             android:exported="true" />
         <activity
             android:name=".Fleming.UserProfileActivity"
