@@ -8,7 +8,7 @@
     tools:context=".Fleming.UserProfileActivity">
 
     <ImageView
-        android:id="@+id/photo"
+        android:id="@+id/prof"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="141dp"
@@ -28,7 +28,7 @@
         android:textColor="#6E0404"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/photo" />
+        app:layout_constraintTop_toBottomOf="@+id/prof" />
 
     <TextView
         android:id="@+id/textView15"

@@ -48,7 +48,7 @@ public class ItemProfileActivity extends AppCompatActivity {
         price = findViewById(R.id.Price);
         des = findViewById(R.id.Description);
         subject = findViewById(R.id.Subject);
-        photoOfObject = findViewById(R.id.photo);
+        photoOfObject = findViewById(R.id.prof);
         reserveButton = findViewById(R.id.reserveButton);
 
         listing = (Listing) getIntent().getSerializableExtra("Listing");
@@ -75,7 +75,7 @@ public class ItemProfileActivity extends AppCompatActivity {
     }
     private void showImage(){
         StorageReference photoRef = storageRef.child(listing.getID());
-        final long ONE_MEGABYTE = 1024 * 1024;
+        final long ONE_MEGABYTE = 1024 * 1024 * 5;
         photoRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {

@@ -11,21 +11,23 @@
         <entry key="..\:/Users/flemi/StudioProjects/cis-marketplace/app/src/main/res/layout/activity_item_profile.xml" value="0.17708333333333334" />
         <entry key="..\:/Users/flemi/StudioProjects/cis-marketplace/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/flemi/StudioProjects/cis-marketplace/app/src/main/res/layout/activity_market.xml" value="0.1" />
-        <entry key="..\:/Users/flemi/StudioProjects/cis-marketplace/app/src/main/res/layout/activity_user_profile.xml" value="0.1" />
+        <entry key="..\:/Users/flemi/StudioProjects/cis-marketplace/app/src/main/res/layout/activity_user_profile.xml" value="0.264" />
+        <entry key="..\:/Users/flemi/StudioProjects/cis-marketplace/app/src/main/res/layout/market_item_row_view.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/flemi/StudioProjects/cis-marketplace/app/src/main/res/layout/market_item_row_view_vertical.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/flemi/StudioProjects/cis-marketplace/app/src/main/res/layout/row_view.xml" value="0.4" />
+        <entry key="..\:/Users/flemi/StudioProjects/cis-marketplace/app/src/main/res/layout/rv_item.xml" value="0.1956521739130435" />
+        <entry key="..\:/Users/flemi/StudioProjects/cis-marketplace/app/src/main/res/layout/subject_row_view.xml" value="0.1956521739130435" />
         <entry key="app/src/main/res/layout/activity_add_item.xml" value="0.31121528198058634" />
         <entry key="app/src/main/res/layout/activity_auth.xml" value="0.13177083333333334" />
         <entry key="app/src/main/res/layout/activity_complete_sign_up.xml" value="0.26800147671793634" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.20360984056336381" />
         <entry key="app/src/main/res/layout/activity_item_profile.xml" value="0.16822916666666668" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2911698924499252" />
-        <entry key="app/src/main/res/layout/activity_market.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_market.xml" value="0.16822916666666668" />
         <entry key="app/src/main/res/layout/activity_user_profile.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/market_item_row_view.xml" value="0.17291666666666666" />
-        <entry key="app/src/main/res/layout/market_item_row_view_vertical.xml" value="0.33877175946730276" />
-        <entry key="app/src/main/res/layout/rv_item.xml" value="0.9911729525755778" />
+        <entry key="app/src/main/res/layout/market_item_row_view_vertical.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/layout/subject_row_view.xml" value="0.15070921985815602" />
-        <entry key="app/src/main/res/menu/search_menu.xml" value="0.3098958333333333" />
       </map>
     </option>
   </component>

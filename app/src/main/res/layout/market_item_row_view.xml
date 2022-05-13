@@ -15,6 +15,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#71DAE8"
             app:layout_constraintBottom_toBottomOf="@+id/itemNameEditText"
             app:layout_constraintEnd_toStartOf="@+id/itemYearLevel"
             app:layout_constraintStart_toStartOf="@+id/itemYearLevel"
