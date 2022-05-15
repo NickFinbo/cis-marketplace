@@ -36,7 +36,7 @@ import com.google.firebase.storage.UploadTask;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class CompleteSignUpActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class CompleteSignUpActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore fireStore;
@@ -85,6 +85,7 @@ public class CompleteSignUpActivity extends AppCompatActivity implements Adapter
             }
         });
 
+//      subject checkboxes
         chinese = findViewById(R.id.ChineseCheckBox);
         english = findViewById(R.id.EnglishCheckBox);
         math = findViewById(R.id.MathCheckBox);
@@ -102,16 +103,17 @@ public class CompleteSignUpActivity extends AppCompatActivity implements Adapter
         UUID = mAuth.getCurrentUser().getUid();
     }
 
+    //  Upload Image
     public void upload(View v) {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,1);
+        startActivityForResult(intent, 1);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK && data!= null && data.getData()!=null) {
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
             mImageUri = data.getData();
             uploadPicture();
         }
@@ -152,7 +154,8 @@ public class CompleteSignUpActivity extends AppCompatActivity implements Adapter
                     });
         }
     }
-    private void showImage(){
+
+    private void showImage() {
         StorageReference photoRef = storageRef.child(UUID);
         final long ONE_MEGABYTE = 1024 * 1024;
         photoRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
@@ -179,36 +182,38 @@ public class CompleteSignUpActivity extends AppCompatActivity implements Adapter
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
+    //  Sign In Success -> to Home
     private void finishSignUp() {
-        if(chinese.isChecked())
+        if (chinese.isChecked())
             subjects.add(chinese.getText().toString());
-        if(english.isChecked())
+        if (english.isChecked())
             subjects.add(chinese.getText().toString());
-        if(math.isChecked())
+        if (math.isChecked())
             subjects.add(math.getText().toString());
-        if(biology.isChecked())
+        if (biology.isChecked())
             subjects.add(biology.getText().toString());
-        if(chemistry.isChecked())
+        if (chemistry.isChecked())
             subjects.add(chemistry.getText().toString());
-        if(physics.isChecked())
+        if (physics.isChecked())
             subjects.add(physics.getText().toString());
-        if(music.isChecked())
+        if (music.isChecked())
             subjects.add(music.getText().toString());
-        if(drama.isChecked())
+        if (drama.isChecked())
             subjects.add(drama.getText().toString());
-        if(film.isChecked())
+        if (film.isChecked())
             subjects.add(film.getText().toString());
-        if(visualArts.isChecked())
+        if (visualArts.isChecked())
             subjects.add(visualArts.getText().toString());
-        if(productDesign.isChecked())
+        if (productDesign.isChecked())
             subjects.add(productDesign.getText().toString());
-        if(computerScience.isChecked())
+        if (computerScience.isChecked())
             subjects.add(computerScience.getText().toString());
-        if(TOK.isChecked())
+        if (TOK.isChecked())
             subjects.add(TOK.getText().toString());
         phoneNumber = phoneNumberField.getText().toString();
         name = nameEditText.getText().toString();
-        User newUser = new User(name,mAuth.getCurrentUser().getEmail(), subjects, phoneNumber,yearLevel,UUID);
+        User newUser = new User(name, mAuth.getCurrentUser().getEmail(), subjects, phoneNumber, yearLevel, UUID);
         fireStore.collection("users").document(UUID).set(newUser);
         startActivity(new Intent(this, HomeActivity.class));
     }

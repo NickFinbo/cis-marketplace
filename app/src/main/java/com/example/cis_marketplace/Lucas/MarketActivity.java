@@ -1,4 +1,5 @@
 package com.example.cis_marketplace.Lucas;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,8 +40,6 @@ public class MarketActivity extends AppCompatActivity {
     Button constrainButton;
     TextView constrainText;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,14 +50,9 @@ public class MarketActivity extends AppCompatActivity {
         constrainText = findViewById(R.id.constrainText);
         System.out.println(constrainButton.getText());
 
-
-
-
-
-
         marketView = findViewById(R.id.marketView);
         marketView.addOnItemTouchListener(
-                new RecyclerItemClickListener(this, marketView ,new RecyclerItemClickListener.OnItemClickListener() {
+                new RecyclerItemClickListener(this, marketView, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
                         //Note position is index
@@ -103,10 +97,11 @@ public class MarketActivity extends AppCompatActivity {
 
                 });
 
-        marketView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
+        marketView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
     }
 
-    public void constrainClicked(View V){
+
+    public void constrainClicked(View V) {
         marketItems.clear();
         db.collection("listings")
                 .get()
@@ -118,7 +113,7 @@ public class MarketActivity extends AppCompatActivity {
                                 Listing listing = document.toObject(Listing.class);
                                 System.out.println(constrainButton.getText());
                                 System.out.println(listing.getName());
-                                if(listing.getName().contains(constrainText.getText())) {
+                                if (listing.getName().contains(constrainText.getText())) {
                                     //Toast.makeText(getApplicationContext(), listing.getName(), Toast.LENGTH_SHORT).show();
                                     marketItems.add(listing);
                                 }
@@ -137,6 +132,6 @@ public class MarketActivity extends AppCompatActivity {
 
                 });
 
-        marketView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
+        marketView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
     }
 }

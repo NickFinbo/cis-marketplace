@@ -42,9 +42,7 @@ public class AuthActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_auth);
-
 
         fireStore = FirebaseFirestore.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -83,11 +81,11 @@ public class AuthActivity extends AppCompatActivity {
             } catch (ApiException e) {
                 Log.w(TAG, "Google sign in failed", e);
             }
-        }
-        else{
+        } else {
             Toast.makeText(AuthActivity.this, "google sign in error", Toast.LENGTH_LONG).show();
         }
     }
+
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -98,7 +96,7 @@ public class AuthActivity extends AppCompatActivity {
                     checkUserValidity(task);
                     Toast.makeText(AuthActivity.this, "Google signed up successfully", Toast.LENGTH_LONG).show();
 
-                }else {
+                } else {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(AuthActivity.this, "Google sign up failed", Toast.LENGTH_LONG).show();
                 }
@@ -106,17 +104,17 @@ public class AuthActivity extends AppCompatActivity {
         });
     }
 
-    protected void checkUserValidity(Task<AuthResult> task){
-        if(task.getResult().getAdditionalUserInfo().isNewUser()){
+    protected void checkUserValidity(Task<AuthResult> task) {
+        if (task.getResult().getAdditionalUserInfo().isNewUser()) {
             startActivity(new Intent(AuthActivity.this, CompleteSignUpActivity.class));
-        }
-        else{
+        } else {
             updateUI(mAuth.getCurrentUser());
         }
     }
 
+    //  Go to home screen
     private void updateUI(FirebaseUser currentUser) {
-        if(!(currentUser == null)){
+        if (!(currentUser == null)) {
             startActivity(new Intent(this, HomeActivity.class));
         }
     }

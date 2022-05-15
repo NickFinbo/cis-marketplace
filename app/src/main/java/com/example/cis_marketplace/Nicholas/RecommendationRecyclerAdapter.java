@@ -19,11 +19,11 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
-public class RecommendationRecyclerAdapter extends RecyclerView.Adapter<RecommendationRecyclerViewHolder>{
+public class RecommendationRecyclerAdapter extends RecyclerView.Adapter<RecommendationRecyclerViewHolder> {
 
     ArrayList<Listing> recommendationList;
 
-    public RecommendationRecyclerAdapter(ArrayList<Listing> data){
+    public RecommendationRecyclerAdapter(ArrayList<Listing> data) {
         recommendationList = data;
     }
 
@@ -33,7 +33,7 @@ public class RecommendationRecyclerAdapter extends RecyclerView.Adapter<Recommen
     @NonNull
     @Override
     public RecommendationRecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View myView = LayoutInflater.from(parent.getContext()).inflate(R.layout.market_item_row_view_vertical,parent,false);
+        View myView = LayoutInflater.from(parent.getContext()).inflate(R.layout.market_item_row_view_vertical, parent, false);
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
         RecommendationRecyclerViewHolder holder = new RecommendationRecyclerViewHolder(myView);
@@ -54,10 +54,11 @@ public class RecommendationRecyclerAdapter extends RecyclerView.Adapter<Recommen
             }
         });
         holder.nameText.setText(recommendationList.get(position).getName());
-        holder.priceText.setText("$"+recommendationList.get(position).getPrice());
+        holder.priceText.setText("$" + recommendationList.get(position).getPrice());
 
     }
-    private void showImage(){
+
+    private void showImage() {
 
     }
 

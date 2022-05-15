@@ -129,26 +129,37 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+//  Go to user profile
     public void profile(View v) {
         startActivity(new Intent(this, UserProfileActivity.class));
     }
+
+//  Sign out, go to Sign in page
     public void signOut(View v){
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(this, AuthActivity.class));
     }
+
+//  Go to Item profile through clicked image
     public void imageClicked(View v){
         ImageView image = (ImageView) findViewById(v.getId());
         // also need to find someway to get the object from firebase and intent put extra to show in itemActivity
         startActivity(new Intent(this, ItemProfileActivity.class));
     }
+
+//  Go to Item profile through clicked subject
     public void subjectClicked(View v,String itemClickedType){//for example Math AA...
         ImageView image = (ImageView) findViewById(v.getId());
         // also need to find someway to get the object from firebase and intent put extra to show in itemActivity
         startActivity(new Intent(this, ItemProfileActivity.class));
     }
+
+//  Go to purchase page
     public void addItemClicked(View v){
         startActivity(new Intent(this, AddItemActivity.class));
     }
+
+//  Go to the market
     public void marketClicked(){
         startActivity(new Intent(this, MarketActivity.class));
     }
@@ -156,13 +167,9 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(new Intent(this, MarketActivity.class));
     }
 
-
-
     public void recyclerClickedUI(int position, ArrayList<String> subjectItems){
 
         //Send All market item data
-
-
         //Intent intent = new Intent(this, ItemsVies.class);
         //intent.putExtra("items", items);
 

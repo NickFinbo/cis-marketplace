@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cis_marketplace.R;
 
-public class RecommendationRecyclerViewHolder extends RecyclerView.ViewHolder
-{
+public class RecommendationRecyclerViewHolder extends RecyclerView.ViewHolder {
     protected TextView nameText;
     protected TextView priceText;
     protected ImageView imageView;
