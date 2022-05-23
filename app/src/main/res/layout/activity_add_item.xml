@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#03A9F4"
-    android:backgroundTint="#9C27B0"
+    android:background="#F6F6F6"
     android:backgroundTintMode="add"
     tools:context=".Fleming.AddItemActivity">
 
@@ -28,6 +27,7 @@
         android:layout_marginStart="23dp"
         android:layout_marginTop="25dp"
         android:text="Description"
+        android:textColor="#7E2424"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subjectt" />
 
@@ -38,6 +38,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
         android:text="Click To Add Image"
+        android:textColor="#7E2424"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/priceEditText" />
 
@@ -67,6 +68,7 @@
         android:layout_marginStart="23dp"
         android:layout_marginTop="37dp"
         android:text="Type"
+        android:textColor="#7E2424"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameEditText" />
 
@@ -86,6 +88,7 @@
         android:layout_marginStart="23dp"
         android:layout_marginTop="26dp"
         android:text="Condition"
+        android:textColor="#7E2424"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/type" />
 
@@ -96,6 +99,7 @@
         android:layout_marginStart="23dp"
         android:layout_marginTop="26dp"
         android:text="Intended Year Level"
+        android:textColor="#7E2424"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/condition" />
 
@@ -139,6 +143,7 @@
         android:layout_marginStart="23dp"
         android:layout_marginTop="25dp"
         android:text="Subject"
+        android:textColor="#7E2424"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/yearLevel" />
 

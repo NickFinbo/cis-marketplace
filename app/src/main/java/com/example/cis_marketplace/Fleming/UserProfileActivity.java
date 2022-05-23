@@ -102,33 +102,31 @@ public class UserProfileActivity extends AppCompatActivity implements Adapter.It
         db = FirebaseFirestore.getInstance();
 
         db.collection("listings").get().addOnCompleteListener(task -> {
-            if(task.isSuccessful()) {
-            for (QueryDocumentSnapshot ds : Objects.requireNonNull(task.getResult())) {
-                Listing bob = ds.toObject(Listing.class);
-                if(bob.getOwnerID() !=null && bob.getOwnerID().equals(mAuth.getCurrentUser().getUid())) {
-                    lists.add(bob);
+            if (task.isSuccessful()) {
+                for (QueryDocumentSnapshot ds : Objects.requireNonNull(task.getResult())) {
+                    Listing bob = ds.toObject(Listing.class);
+                    if (bob.getOwnerID() != null && bob.getOwnerID().equals(mAuth.getCurrentUser().getUid())) {
+                        lists.add(bob);
+                    }
+
                 }
+                setUp();
 
             }
-            setUp();
+        });
 
-        }
-    });
-
-}
+    }
 
     public void setUp() {
-        for(int i = 0;i<lists.size();i++) {
-            if(lists.get(i).getState().equals("available")) {
+        for (int i = 0; i < lists.size(); i++) {
+            if (lists.get(i).getState().equals("available")) {
                 available.add(lists.get(i));
                 avail++;
                 System.out.println(lists.get(i).getState());
-            }
-            else if(lists.get(i).getState().equals("sold")) {
+            } else if (lists.get(i).getState().equals("sold")) {
                 sold.add(lists.get(i));
                 sol++;
-            }
-            else if(lists.get(i).getState().equals("reserved")) {
+            } else if (lists.get(i).getState().equals("reserved")) {
                 reserved.add(lists.get(i));
                 res++;
             }
@@ -138,17 +136,15 @@ public class UserProfileActivity extends AppCompatActivity implements Adapter.It
         category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                if(category.getSelectedItem().toString().equals("Available")) {
+                if (category.getSelectedItem().toString().equals("Available")) {
                     adap = new Adapter(available, avail);
                     adap.setClickListener(c);
                     rec.setAdapter(adap);
-                }
-                else if(category.getSelectedItem().toString().equals("Reserved")) {
+                } else if (category.getSelectedItem().toString().equals("Reserved")) {
                     adap = new Adapter(reserved, res);
                     adap.setClickListener(c);
                     rec.setAdapter(adap);
-                }
-                else if(category.getSelectedItem().toString().equals("Sold")) {
+                } else if (category.getSelectedItem().toString().equals("Sold")) {
                     adap = new Adapter(sold, sol);
                     adap.setClickListener(c);
                     rec.setAdapter(adap);
@@ -187,5 +183,5 @@ public class UserProfileActivity extends AppCompatActivity implements Adapter.It
         intent.putExtra("Listing", (Serializable) lists.get(position));
         System.out.println(lists.get(position).getName());
         view.getContext().startActivity(intent);
-}
+    }
 }

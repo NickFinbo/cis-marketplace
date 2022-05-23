@@ -65,15 +65,16 @@ public class ItemProfileActivity extends AppCompatActivity {
         String subjectText = listing.getSubject();
 
         name.setText(nameText);
-        price.setText("$"+priceText);
+        price.setText("$" + priceText);
         des.setText(desText);
         subject.setText(subjectText);
         showImage();
 
-        
 
     }
-    private void showImage(){
+
+    //  Show the photo of the object
+    private void showImage() {
         StorageReference photoRef = storageRef.child(listing.getID());
         final long ONE_MEGABYTE = 1024 * 1024 * 5;
         photoRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
@@ -90,16 +91,18 @@ public class ItemProfileActivity extends AppCompatActivity {
             }
         });
     }
-    public void reservedClicked(View v){
-        if(listing.getState().equals("available")){
-            fb.collection("listings").document(listing.getID()).update("state","reserved", "buyerID",mAuth.getUid());
+
+    //  A user is able to reserve an item
+    public void reservedClicked(View v) {
+        if (listing.getState().equals("available")) {
+            fb.collection("listings").document(listing.getID()).update("state", "reserved", "buyerID", mAuth.getUid());
             reserveButton.setBackgroundColor(Color.GRAY);
-            Toast.makeText(this,"Successfully Reserved", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Successfully Reserved", Toast.LENGTH_LONG).show();
         }
-        if(listing.getState().equals("reserved")){
+        if (listing.getState().equals("reserved")) {
             reserveButton.setBackgroundColor(Color.GRAY);
             reserveButton.setText("Reserved");
-            Toast.makeText(this,"This item is reserved by you or someone else", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "This item is reserved by you or someone else", Toast.LENGTH_LONG).show();
         }
     }
 }

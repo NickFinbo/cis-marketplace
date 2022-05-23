@@ -18,6 +18,7 @@ public class Listing implements Serializable {
     public Listing() {
 
     }
+
     public Listing(String condition, String description, String id, String name, String ownerID, double price, String state, String subject, String type, int yearLevel) {
         this.buyerID = null;
         this.condition = condition;
@@ -81,7 +82,7 @@ public class Listing implements Serializable {
     }
 
     public Double getPrice() {
-        return  price;
+        return price;
     }
 
     public void setPrice(double price) {

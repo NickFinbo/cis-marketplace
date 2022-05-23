@@ -52,7 +52,7 @@ public class AddItemActivity extends AppCompatActivity {
     TextView image;
     TextView yearLevel;
     TextView type;
-//SUBJECT???
+    //SUBJECT???
     Spinner subject;
     EditText namee;
     Spinner conditionn;
@@ -92,7 +92,7 @@ public class AddItemActivity extends AppCompatActivity {
         conditions.add("Good");
         conditions.add("Acceptable");
 
-        for(int i = 7;i<=13;i++) {
+        for (int i = 7; i <= 13; i++) {
             yearLevels.add(Integer.toString(i));
         }
 
@@ -137,7 +137,7 @@ public class AddItemActivity extends AppCompatActivity {
         yearLevel = findViewById(R.id.yearLevel);
         yearLevell = findViewById(R.id.yearLevelSpinner);
         type = findViewById(R.id.type);
-        typee= findViewById(R.id.typeSpinner);
+        typee = findViewById(R.id.typeSpinner);
         uploadButton = findViewById(R.id.uploadButton);
 
         db = FirebaseFirestore.getInstance();
@@ -156,10 +156,9 @@ public class AddItemActivity extends AppCompatActivity {
         yearLevell.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                if(position==5 || position==6 ) {
+                if (position == 5 || position == 6) {
                     subject.setAdapter(ad);
-                }
-                else {
+                } else {
                     subject.setAdapter(ada);
                 }
             }
@@ -173,7 +172,7 @@ public class AddItemActivity extends AppCompatActivity {
         typee.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                if (!typee.getSelectedItem().toString().equals("Textbook") && !typee.getSelectedItem().toString().equals("Notes") ) {
+                if (!typee.getSelectedItem().toString().equals("Textbook") && !typee.getSelectedItem().toString().equals("Notes")) {
                     subject.setVisibility(View.INVISIBLE);
                     yearLevell.setVisibility(View.INVISIBLE);
                     subjectt.setVisibility(View.INVISIBLE);
@@ -205,7 +204,7 @@ public class AddItemActivity extends AppCompatActivity {
         String typ = typee.getSelectedItem().toString();
         String subjec = subject.getSelectedItem().toString();
 
-        if (!typee.getSelectedItem().toString().equals("Textbook") && !typee.getSelectedItem().toString().equals("Notes") ) {
+        if (!typee.getSelectedItem().toString().equals("Textbook") && !typee.getSelectedItem().toString().equals("Notes")) {
             subjec = null;
             yearleve = null;
             conditio = null;
@@ -215,14 +214,13 @@ public class AddItemActivity extends AppCompatActivity {
         String desc = descriptionn.getText().toString();
         String pric = pricee.getText().toString();
 
-        if(isValid()) {
+        if (isValid()) {
 
-                Listing listing = new Listing(conditio, desc, UUIDref, nam, mUser.getUid(), Double.parseDouble(pric), "available", subjec, typ, Integer.parseInt(yearleve));
-                db.collection("listings").document(listing.getID()).set(listing);
-                Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this, HomeActivity.class));
-            }
-        else {
+            Listing listing = new Listing(conditio, desc, UUIDref, nam, mUser.getUid(), Double.parseDouble(pric), "available", subjec, typ, Integer.parseInt(yearleve));
+            db.collection("listings").document(listing.getID()).set(listing);
+            Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, HomeActivity.class));
+        } else {
             Toast.makeText(getApplicationContext(), "Fields incomplete", Toast.LENGTH_SHORT).show();
         }
     }
@@ -231,12 +229,12 @@ public class AddItemActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,1);
+        startActivityForResult(intent, 1);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK && data!= null && data.getData()!=null) {
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
             mImageUri = data.getData();
             uploadPicture();
         }
@@ -277,7 +275,8 @@ public class AddItemActivity extends AppCompatActivity {
         TextView imageEditText = findViewById(R.id.addImageEditText);
         imageEditText.setText("Image Uploaded");
     }
-    public void homeUI(View v){
+
+    public void homeUI(View v) {
         startActivity(new Intent(this, HomeActivity.class));
     }
 

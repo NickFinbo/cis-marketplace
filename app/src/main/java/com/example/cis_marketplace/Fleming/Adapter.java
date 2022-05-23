@@ -22,7 +22,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
+public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     ArrayList<Listing> listings;
 
     int amount;
@@ -50,24 +50,24 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
         holder.itemName.setText(listings.get(position).getName());
         holder.itemCategory.setText(listings.get(position).getType());
         holder.itemCondition.setText(listings.get(position).getState());
-      //  holder.itemYearLevel.setText(listings.get(position).getYearLevel());
+        //  holder.itemYearLevel.setText(listings.get(position).getYearLevel());
         holder.itemSubject.setText(listings.get(position).getSubject());
         holder.itemPrice.setText(Double.toString(listings.get(position).getPrice()));
-            StorageReference photo = ref.child(listings.get(position).getID());
-            final long ONE_MEGABYTE = 1024 * 1024 * 5;
-            photo.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                @Override
-                public void onSuccess(byte[] bytes) {
-                    Bitmap b = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                    holder.itemImage.setImageBitmap(b);
-                    holder.itemImage.setVisibility(View.VISIBLE);
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
+        StorageReference photo = ref.child(listings.get(position).getID());
+        final long ONE_MEGABYTE = 1024 * 1024 * 5;
+        photo.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                Bitmap b = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                holder.itemImage.setImageBitmap(b);
+                holder.itemImage.setVisibility(View.VISIBLE);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
 
-                }
-            });
+            }
+        });
 
 
     }
@@ -78,7 +78,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
         return amount;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         protected TextView itemName;
         protected TextView itemPrice;
         protected TextView itemCondition;
@@ -121,7 +121,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
     public interface ItemClickListener {
         void onItemClick(View view, int position);
     }
-
 
 
 }
